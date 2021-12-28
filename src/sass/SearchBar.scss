@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+$background-color: rgb(199, 195, 195);
+
+.searchBar-container {
+  width: 80vw;
+  input {
+    background-color: $background-color;
+    width: 90%;
+    padding: 10px;
+    caret-color: auto;
+    outline: none;
+    border: 2px solid #000000;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    &:focus {
+      filter: brightness(1.1);
+    }
+  }
+}
+
+::placeholder {
+  font-family: 'Roboto', sans-serif;
+  color: #111111;
+  font-size: 1rem;
+}
+
+.searchBtn {
+  background-color: $background-color;
+  height: 100%;
+  padding: 10px 15px;
+  border: 2px solid #000000;
+  border-left: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+  }
+}

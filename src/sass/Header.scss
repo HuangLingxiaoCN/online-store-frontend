@@ -1,0 +1,14 @@
+$logo-color: #240ea071;
+$background-color: #7b77a3e5;
+
+.logo {
+  height: 5rem;
+  color: $logo-color
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $background-color;
+}

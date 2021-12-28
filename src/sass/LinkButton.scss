@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+.linkBtn {
+  font-family: 'Roboto', sans-serif;
+  font: {
+    size: 18px;
+    weight: 600;
+  }
+  color: rgb(18, 18, 19);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
