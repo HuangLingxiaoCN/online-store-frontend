@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 import Login from './Login'
 import Profile from './Profile'
@@ -9,7 +10,9 @@ export default function NavBar() {
   return (
     <div className="navbar-container">
       <Login />
-      <Profile />
+      <Link to="/profile">
+        <Profile />
+      </Link>
       <Register />
     </div>
   )

@@ -6,15 +6,14 @@ import Profile from './pages/Profile'
 import './css/App.css';
 
 /*
-  TODO: 3. search functionality
-        4. store icon routes to home page
+  TODO: 
 */
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
