@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../css/Item.css";
+import "../../sass/Item.scss";
 
 export default function Item(props: any) {
   return (

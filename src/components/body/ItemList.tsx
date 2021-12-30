@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Item from "./Item";
-import "../../css/ItemList.css";
+import "../../sass/ItemList.scss";
 
 export default function ItemList({ searchText }: any) {
   const [items, setItems] = useState<any>([]);
