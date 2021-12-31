@@ -1,14 +1,19 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie'
 
+import { RootState } from "../redux/Types";
+import { userLogin } from "../redux/Action";
 import "../sass/Form.scss";
 
 export default function LoginPage() {
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const loggedIn = useSelector((state: RootState) => state.isLoggedIn)
+  const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
@@ -33,21 +38,22 @@ export default function LoginPage() {
       const jwt = res.data;
       Cookies.set('jwt', jwt);
       if(res.status === 200) {
-        // get the user with jwt token
+        // get the user information with jwt token
         axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", { headers: { "x-auth-token": jwt } })
+          .then(user => console.log(user))
           .catch(err => console.log(err))
-        setIsLoggedIn(true)
+        dispatch(userLogin)
       }
     });
   };
 
   let result: any = <div></div>;
 
-  if(isLoggedIn) {
+  if(loggedIn) {
     navigate('/', { replace: true })
   }
 
-  if(!isLoggedIn) {
+  if(!loggedIn) {
     result = <div>
     <h1>Login Page</h1>
     <form onSubmit={submitHandler}>

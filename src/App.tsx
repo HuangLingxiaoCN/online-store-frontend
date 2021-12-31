@@ -7,7 +7,8 @@ import LoginPage from './pages/LoginPage'
 import './sass/App.scss';
 
 /*
-  TODO: 1. User register
+  TODO: 0. Manage state using Redux
+        1. User register
         2. User login (jwt in cookie)
         3. Cart items list
         4. Listing items list

@@ -26,7 +26,6 @@ export default function ItemList({ searchText }: any) {
 
   return (
     <div className="container">
-      <h3>Find something you want. Upload something others need</h3>
       {isLoading ? (
         <div className="loader"></div>
       ) : (
