@@ -9,7 +9,6 @@ export default function Home() {
   const [searchText, setSearchText] = useState<String>('')
   const loginState = useSelector((state: RootState) => state.isLoggedIn)
 
-  // Refresh the page and the state will be lost but jwt key in cookies is still there
   const isLoggedIn = loginState ? true : false
 
   return (
