@@ -2,7 +2,7 @@ import { FormEvent, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 import { RootState } from "../redux/Types";
 import { userLogin } from "../redux/Action";
@@ -12,10 +12,10 @@ export default function LoginPage() {
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
 
-  const loggedIn = useSelector((state: RootState) => state.isLoggedIn)
-  const dispatch = useDispatch()
+  const loggedIn = useSelector((state: RootState) => state.isLoggedIn);
+  const dispatch = useDispatch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -34,36 +34,38 @@ export default function LoginPage() {
         email: email,
         password: password,
       },
-    }).then(res => {
+    }).then((res) => {
       const jwt = res.data;
-      Cookies.set('jwt', jwt);
-      if(res.status === 200) {
+      Cookies.set("jwt", jwt);
+      if (res.status === 200) {
         // get the user information with jwt token
-        axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", { headers: { "x-auth-token": jwt } })
-          .then(user => console.log(user))
-          .catch(err => console.log(err))
-        dispatch(userLogin)
+        axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
+          headers: { "x-auth-token": jwt },
+        }).catch((err) => console.log(err));
+        dispatch(userLogin);
       }
     });
   };
 
   let result: any = <div></div>;
 
-  if(loggedIn) {
-    navigate('/', { replace: true })
+  if (loggedIn) {
+    navigate("/", { replace: true });
   }
 
-  if(!loggedIn) {
-    result = <div>
-    <h1>Login Page</h1>
-    <form onSubmit={submitHandler}>
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" ref={emailRef} />
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" ref={passwordRef} />
-      <button type="submit">Log in</button>
-    </form>
-  </div>
+  if (!loggedIn) {
+    result = (
+      <div>
+        <h1>Login Page</h1>
+        <form onSubmit={submitHandler}>
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" ref={emailRef} />
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" ref={passwordRef} />
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+    );
   }
 
   return result;

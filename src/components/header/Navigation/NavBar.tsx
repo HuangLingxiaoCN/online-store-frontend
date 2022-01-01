@@ -24,7 +24,9 @@ export default function NavBar() {
       <Link to="/login">
         <Login />
       </Link>
-      <Register />
+      <Link to="/register">
+        <Register />
+      </Link>
     </div>
   );
 
