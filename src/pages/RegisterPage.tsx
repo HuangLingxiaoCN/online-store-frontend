@@ -65,37 +65,6 @@ export default function RegisterPage() {
       console.log(err)
     });
   }
-    // if user register successfully, log in the user
-    // else display error message
-  //   if(registerOk) {
-  //     console.log("Successfully registered")
-  //     axios({
-  //       url: "https://fierce-spring-store-backend.herokuapp.com/api/auth",
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json;charset=UTF-8",
-  //       },
-  //       data: {
-  //         email: email,
-  //         password: password,
-  //       },
-  //     }).then((res) => {
-  //       console.log("Successfully authenticate")
-  //       const jwt = res.data;
-  //       Cookies.set("jwt", jwt);
-  //       if (res.status === 200) {
-  //         // get the user information with jwt token
-  //         axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
-  //           headers: { "x-auth-token": jwt },
-  //         }).catch((err) => console.log(err));
-  //         dispatch(userLogin);
-  //       }
-  //     }).catch(err => console.log(err));
-  //   }
-
-  //   navigate("/", { replace: true });
-  // };
 
   return (
     <div>

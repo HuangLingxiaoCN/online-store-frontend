@@ -1,0 +1,13 @@
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.detailImage {
+  width: 30rem;
+  height: 30rem;
+  border: 0.5px solid black;
+  border-radius: 10px;
+}
