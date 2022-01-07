@@ -6,7 +6,9 @@ import Login from "./Login";
 import Logout from "./Logout";
 import Profile from "./Profile";
 import Register from "./Register";
+import Cart from "./Cart";
 import "../../../sass/NavBar.scss";
+
 
 export default function NavBar() {
   // To force this component rerender
@@ -14,10 +16,13 @@ export default function NavBar() {
 
   let returnedComponent = Cookies.get("jwt") ? (
     <div className="navbar-container">
-      <Logout setRerender={setRerender} rerender={rerender} />
+      <Link to="/cart">
+        <Cart />
+      </Link>
       <Link to="/profile">
         <Profile />
       </Link>
+      <Logout setRerender={setRerender} rerender={rerender} />
     </div>
   ) : (
     <div className="navbar-container">

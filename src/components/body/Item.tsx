@@ -8,15 +8,25 @@ export default function Item(props: any) {
 
   const itemDetailHandler = () => {
     // passing props to detail page
-    navigate("/detail", { state: { imageUrl, name, genre, price }});
-  }
+    navigate("/detail", { state: { imageUrl, name, genre, price } });
+  };
 
   return (
     <div className="item-container">
-      <img className="image" src={imageUrl} alt={name} onClick={itemDetailHandler} />
-      <h4 className="itemName" onClick={itemDetailHandler}>{name}</h4>
+      <img
+        className="image"
+        src={imageUrl}
+        alt={name}
+        onClick={itemDetailHandler}
+      />
+      <div className="itemName" onClick={itemDetailHandler}>
+        <h4 title={name}>{name}</h4>
+      </div>
       <p>{genre}</p>
-      <h2>€{price}</h2>
+      <div className="add-to-cart">
+        <h2>€{price}</h2>
+        <button className="add-to-cart-btn">Add To Cart</button>
+      </div>
     </div>
   );
 }

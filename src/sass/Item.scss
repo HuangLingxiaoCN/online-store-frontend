@@ -7,23 +7,44 @@
 }
 
 .image {
-  width: 100%;
+  width: 14vw;
+  min-width: 180px;
   height: 15rem;
   border: 0.5px solid black;
   border-radius: 10px;
   &:hover {
     cursor: pointer;
-    border: 2px solid black;
   }
 }
 
 .itemName {
-  font: {
-    weight: 500;
-    family: "sans-serif";
-  }
+  width: 14vw;
+  min-width: 180px;
+  font-family: "sans-serif";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+  }
+}
+
+.add-to-cart {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-to-cart-btn {
+  height: 40px;
+  padding: 5px 10px;
+  background-color: rgb(122, 73, 73);
+  color: white;
+  border-radius: 10px;
+  align-self: center;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8)
   }
 }

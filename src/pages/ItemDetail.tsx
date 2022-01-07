@@ -4,7 +4,7 @@ import Header from "../components/header/Header";
 
 import "../sass/ItemDetail.scss";
 
-export const ItemDetail = () => {
+export default function ItemDetail() {
   const { state }: any = useLocation();
   const { imageUrl, name, genre, price } = state;
 
