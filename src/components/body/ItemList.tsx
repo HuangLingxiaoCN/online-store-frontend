@@ -7,6 +7,7 @@ import "../../sass/ItemList.scss";
 export default function ItemList({ searchText }: any) {
   const [items, setItems] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<any>(true);
+  const [hasError, setHasError] = useState<any>(false);
 
   let filteredItems;
 
@@ -14,10 +15,15 @@ export default function ItemList({ searchText }: any) {
     axios
       .get("https://fierce-spring-store-backend.herokuapp.com/api/products")
       .then((res) => {
-        setItems(res.data);
+        setHasError(false);
         setIsLoading(false);
+        setItems(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setHasError(true);
+        setIsLoading(false);
+        console.log(error);
+      });
   }, []);
 
   filteredItems = items.filter((item: { name: string }) =>
@@ -26,9 +32,11 @@ export default function ItemList({ searchText }: any) {
 
   return (
     <div className="container">
-      {isLoading ? (
-        <div className="loader"></div>
-      ) : (
+      {isLoading && !hasError && <div className="loader"></div>}
+      {hasError && !isLoading && (
+        <p>Something goes wrong. Try to refresh the page</p>
+      )}
+      {!hasError && !isLoading && (
         <div className="list-container">
           {filteredItems.map((item: any) => {
             return <Item {...item} key={item._id} />;

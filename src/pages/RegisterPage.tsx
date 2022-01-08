@@ -67,7 +67,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Register Page</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="name">Name</label>

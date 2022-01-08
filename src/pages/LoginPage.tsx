@@ -55,8 +55,8 @@ export default function LoginPage() {
 
   if (!loggedIn) {
     result = (
-      <div>
-        <h1>Login Page</h1>
+      <div className="form-container">
+        <h1>Login</h1>
         <form onSubmit={submitHandler}>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" ref={emailRef} />
