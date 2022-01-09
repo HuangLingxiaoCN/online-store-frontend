@@ -1,6 +1,7 @@
 import { FormEvent, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -59,10 +60,15 @@ export default function LoginPage() {
         <h1>Login</h1>
         <form onSubmit={submitHandler}>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" ref={emailRef} />
+          <input type="email" id="email" ref={emailRef} className="form-input" />
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" ref={passwordRef} />
+          <input type="password" id="password" ref={passwordRef} className="form-input" />
           <button type="submit">Log in</button>
+          <Link to="/">
+            <button type="button" className="backBtn">
+              Go Back To Store
+            </button>
+          </Link>
         </form>
       </div>
     );

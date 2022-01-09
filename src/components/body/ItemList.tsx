@@ -34,7 +34,7 @@ export default function ItemList({ searchText }: any) {
     <div className="container">
       {isLoading && !hasError && <div className="loader"></div>}
       {hasError && !isLoading && (
-        <p>Something goes wrong. Try to refresh the page</p>
+        <p className="error-text">Something goes wrong. Try to refresh the page</p>
       )}
       {!hasError && !isLoading && (
         <div className="list-container">

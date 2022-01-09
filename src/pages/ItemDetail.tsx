@@ -6,7 +6,7 @@ import "../sass/ItemDetail.scss";
 
 export default function ItemDetail() {
   const { state }: any = useLocation();
-  const { imageUrl, name, genre, price } = state;
+  const { imageUrl, name, genre, price, description } = state;
 
   return (
     <>
@@ -17,6 +17,7 @@ export default function ItemDetail() {
           <div>
             <h4>{name}</h4>
             <p>{genre}</p>
+            <p>{description}</p>
             <h2>€{price}</h2>
             <button>Add To Cart</button>
           </div>

@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../../sass/Item.scss";
 
 export default function Item(props: any) {
-  const { imageUrl, name, genre, price } = props;
+  const { imageUrl, name, genre, price, description } = props;
   const navigate = useNavigate();
 
   const itemDetailHandler = () => {
     // passing props to detail page
-    navigate("/detail", { state: { imageUrl, name, genre, price } });
+    navigate("/detail", { state: { imageUrl, name, genre, price, description } });
   };
 
   return (
