@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -10,19 +10,25 @@ import Cart from "./Cart";
 import "../../../sass/NavBar.scss";
 
 
-export default function NavBar() {
-  // To force this component rerender
-  const [rerender, setRerender] = useState(false);
+export default function NavBar({cartItems}: any) {
+  const [jwt, setJwt] = useState('')
 
-  let returnedComponent = Cookies.get("jwt") ? (
+  useEffect(() => {
+    const jwt = Cookies.get("jwt")
+    if(jwt) {
+      setJwt(jwt)
+    }
+  }, [])
+
+  let returnedComponent = jwt ? (
     <div className="navbar-container">
       <Link to="/cart">
-        <Cart />
+        <Cart cartItems={cartItems} />
       </Link>
       <Link to="/profile">
         <Profile />
       </Link>
-      <Logout setRerender={setRerender} rerender={rerender} />
+      <Logout setJwt={setJwt} />
     </div>
   ) : (
     <div className="navbar-container">

@@ -1,0 +1,17 @@
+.cart-btn {
+  background-color: #d12f07;
+  padding: 10px 20px;
+  color: rgb(228, 231, 218);
+  font: {
+    family: "Helvetica Neue", Helvetica, Arial;
+    weight: bold;
+  }
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 2px 5px 2px rgb(0 0 0 / 20%);
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+  }
+}

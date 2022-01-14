@@ -6,7 +6,10 @@ import {
 } from './Types'
 
 const initialState = {
-  isLoggedIn: Cookies.get('jwt') ? true : false
+  isLoggedIn: Cookies.get('jwt') ? true : false,
+
+  // Initial email is empty so refreshing the page will make email empty
+  email: ''
 }
 
 export default function reducerFunction(state = initialState, action: any) {
@@ -14,13 +17,15 @@ export default function reducerFunction(state = initialState, action: any) {
     case LOGIN:
       return {
         ...state,
-        isLoggedIn: true
+        isLoggedIn: true,
+        email: action.payload
       }
     
     case LOGOUT:
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
+        email: ''
       }
 
     default:

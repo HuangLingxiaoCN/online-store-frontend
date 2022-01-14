@@ -12,8 +12,7 @@ export default function ItemList({ searchText }: any) {
   let filteredItems;
 
   useEffect(() => {
-    axios
-      .get("https://fierce-spring-store-backend.herokuapp.com/api/products")
+    axios("https://fierce-spring-store-backend.herokuapp.com/api/products")
       .then((res) => {
         setHasError(false);
         setIsLoading(false);
@@ -34,7 +33,9 @@ export default function ItemList({ searchText }: any) {
     <div className="container">
       {isLoading && !hasError && <div className="loader"></div>}
       {hasError && !isLoading && (
-        <p className="error-text">Something goes wrong. Try to refresh the page</p>
+        <p className="error-text">
+          Something goes wrong. Try to refresh the page
+        </p>
       )}
       {!hasError && !isLoading && (
         <div className="list-container">

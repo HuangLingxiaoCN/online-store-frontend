@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-// import Home from '../../pages/Home'
 import SearchBar from "./SearchBar";
 import NavBar from "./Navigation/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import "../../sass/Header.scss";
 
-export default function Header({setSearchText}: any) {
+export default function Header({setSearchText, cartItems}: any) {
+
   const emptySearch = () => {
     setSearchText('')
   }
@@ -21,7 +21,7 @@ export default function Header({setSearchText}: any) {
         />
       </Link>
       <SearchBar setSearchText={setSearchText} />
-      <NavBar />
+      <NavBar cartItems={cartItems} />
     </div>
   );
 }

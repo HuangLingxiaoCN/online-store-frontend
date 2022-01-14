@@ -16,6 +16,7 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-redux": "^7.1.21",
     "@types/react-router-dom": "^5.3.2",
+    "@types/redux-thunk": "^2.1.0",
     "axios": "^0.24.0",
     "js-cookie": "^3.0.1",
     "react": "^17.0.2",
@@ -24,12 +25,13 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "sass": "^1.45.1",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=8080 && react-scripts start",
     "sass": "sass src/sass:src/css --watch --no-source-map",
     "build": "react-scripts build",
     "test": "react-scripts test",

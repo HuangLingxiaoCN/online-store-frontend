@@ -43,7 +43,7 @@ export default function LoginPage() {
         axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
           headers: { "x-auth-token": jwt },
         }).catch((err) => console.log(err));
-        dispatch(userLogin);
+        dispatch(userLogin(email));
       }
     });
   };
