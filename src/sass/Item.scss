@@ -21,6 +21,7 @@
   width: 14vw;
   min-width: 180px;
   font-family: "sans-serif";
+  // The trick to hide long item title
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

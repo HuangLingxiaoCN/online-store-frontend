@@ -9,7 +9,6 @@ import { RootState } from "../../redux/Types";
 export default function Item(props: any) {
   const { imageUrl, name, genre, price, description } = props;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
-  // !!!
   const email = useSelector((state: RootState) => state.email);
   const navigate = useNavigate();
 
