@@ -17,6 +17,8 @@ export default function Item(props: any) {
     navigate("/detail", { state: { imageUrl, name, genre, price, description } });
   };
 
+  console.log(email)
+
   const addToCartHandler = () => {
     if(!isLoggedIn) {
       alert('Please fist log in');
@@ -36,7 +38,6 @@ export default function Item(props: any) {
             "x-auth-token": jwt
           }
         }
-  
         const url = 'https://fierce-spring-store-backend.herokuapp.com/api/user/cart/add'
   
         axios.patch(url, data, config)

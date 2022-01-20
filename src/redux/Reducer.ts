@@ -1,35 +1,30 @@
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
+import { LOGIN, LOGOUT } from "./Types";
 
-import {
-  LOGIN,
-  LOGOUT,
-} from './Types'
+const jwt: any = Cookies.get("jwt");
 
 const initialState = {
-  isLoggedIn: Cookies.get('jwt') ? true : false,
-
-  // Initial email is empty so refreshing the page will make email empty
-  email: ''
-}
+  isLoggedIn: jwt ? true : false,
+  email: '',
+};
 
 export default function reducerFunction(state = initialState, action: any) {
-  switch(action.type) {
+  switch (action.type) {
     case LOGIN:
       return {
         ...state,
         isLoggedIn: true,
-        email: action.payload
-      }
-    
+        email: action.payload,
+      };
+
     case LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
-        email: ''
-      }
+        email: "",
+      };
 
     default:
-      return state
+      return state;
   }
 }
-
