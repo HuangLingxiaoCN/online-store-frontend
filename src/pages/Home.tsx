@@ -54,7 +54,7 @@ export default function Home() {
     <>
       <div style={{ minHeight: "100vh" }}>
         <Header setSearchText={setSearchText} cartItems={cartItems} />
-        <ItemList searchText={searchText} items={items} isLoading={isLoading} hasError={hasError} />
+        <ItemList searchText={searchText} items={items} isLoading={isLoading} hasError={hasError} setCartItems={setCartItems} cartItems={cartItems} />
       </div>
       <Footer />
     </>

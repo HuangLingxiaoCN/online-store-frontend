@@ -14,40 +14,46 @@ export default function Item(props: any) {
 
   const itemDetailHandler = () => {
     // passing props to detail page
-    navigate("/detail", { state: { imageUrl, name, genre, price, description } });
+    navigate("/detail", {
+      state: { imageUrl, name, genre, price, description },
+    });
   };
 
-  console.log(email)
-
   const addToCartHandler = () => {
-    if(!isLoggedIn) {
-      alert('Please fist log in');
-    } else {   
+    if (!isLoggedIn) {
+      alert("Please fist log in");
+    } else {
       const data = {
         email: email,
         productName: name,
-        quantity: 1
-      }
+        quantity: 1,
+      };
 
-      const jwt = Cookies.get("jwt")
-      if(jwt !== undefined) {
+      const jwt = Cookies.get("jwt");
+      if (jwt !== undefined) {
         const config = {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json;charset=UTF-8",
-            "x-auth-token": jwt
-          }
-        }
-        const url = 'https://fierce-spring-store-backend.herokuapp.com/api/user/cart/add'
-  
-        axios.patch(url, data, config)
-        .then(res => console.log(res))
-        .catch(error => console.log(error))
+            "x-auth-token": jwt,
+          },
+        };
+        const url =
+          "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/add";
+
+        axios
+          .patch(url, data, config)
+          .then((res) => {
+            // after adding item to cart, you also need to 
+            // update the header to show the updates
+            props.setCartItems([...props.cartItems, res.data])
+          })
+          .catch((error) => console.log(error));
       } else {
-        throw new Error('JWT is not defined in cookies')
+        throw new Error("JWT is not defined in cookies");
       }
     }
-  }
+  };
 
   return (
     <div className="item-container">
@@ -63,7 +69,9 @@ export default function Item(props: any) {
       <p>{genre}</p>
       <div className="add-to-cart">
         <h2>€{price}</h2>
-        <button className="add-to-cart-btn" onClick={addToCartHandler}>Add To Cart</button>
+        <button className="add-to-cart-btn" onClick={addToCartHandler}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );

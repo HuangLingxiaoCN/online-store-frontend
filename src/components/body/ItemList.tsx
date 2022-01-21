@@ -1,7 +1,7 @@
 import Item from "./Item";
 import "../../sass/ItemList.scss";
 
-export default function ItemList({ searchText, items, isLoading, hasError }: any) {
+export default function ItemList({ searchText, items, isLoading, hasError, setCartItems, cartItems }: any) {
   let filteredItems;
 
   filteredItems = items.filter((item: { name: string }) =>
@@ -19,7 +19,7 @@ export default function ItemList({ searchText, items, isLoading, hasError }: any
       {!hasError && !isLoading && (
         <div className="list-container">
           {filteredItems.map((item: any) => {
-            return <Item {...item} key={item._id} />;
+            return <Item {...item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} />;
           })}
         </div>
       )}

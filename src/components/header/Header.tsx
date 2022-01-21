@@ -12,8 +12,6 @@ export default function Header({setSearchText, cartItems}: any) {
     setSearchText('')
   }
 
-  console.log(cartItems)
-
   return (
     <div className="header">
       <Link to="/" onClick={emptySearch}>
