@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import "../../sass/Header.scss";
 
-export default function Header({setSearchText, cartItems}: any) {
+export default function Header({setSearchText, cartItemsQuantity}: any) {
 
   const emptySearch = () => {
     setSearchText('')
@@ -21,7 +21,7 @@ export default function Header({setSearchText, cartItems}: any) {
         />
       </Link>
       <SearchBar setSearchText={setSearchText} />
-      <NavBar cartItems={cartItems} />
+      <NavBar cartItemsQuantity={cartItemsQuantity} />
     </div>
   );
 }

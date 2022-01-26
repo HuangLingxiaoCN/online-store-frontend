@@ -1,9 +1,17 @@
+import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
+
+import CartItem from '../components/UI/cartItem/CartItem'
+import "../sass/ShoppingCart.scss";
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // get all cart items from the user
@@ -11,16 +19,34 @@ export default function CartPage() {
     axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
       headers: { "x-auth-token": jwt },
     })
-      .then((res) => setCartItems(res.data))
+      .then((res) => setCartItems(res.data.cart))
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
   return (
-    <div>
-      <h2>Cart Page</h2>
-      {console.log(cartItems)}
-    </div>
+    <React.Fragment>
+      <button
+        onClick={() => {
+          navigate("/", { replace: true });
+        }}
+        className="back-to-home-btn"
+      >
+        <FontAwesomeIcon
+          icon={faAngleDoubleLeft}
+          style={{ marginRight: "5px" }}
+        />
+        Back to Home page
+      </button>
+      <div className="shopping-cart-container">
+        <h1>{cartItems.length} items in basket</h1>
+        {cartItems.map((item: any) => {
+          return <CartItem item={item} key={item._id} />
+        })}
+        {console.log(cartItems)}
+      </div>
+      <button>Check Out</button>
+    </React.Fragment>
   );
 }

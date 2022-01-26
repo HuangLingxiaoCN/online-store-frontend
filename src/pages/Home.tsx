@@ -16,6 +16,7 @@ export default function Home() {
 
   const [searchText, setSearchText] = useState<String>("");
   const [cartItems, setCartItems] = useState([]);
+  const [cartItemsQuantity, setCartItemsQuantity] = useState(0);
 
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn)
   const dispatch = useDispatch()
@@ -44,16 +45,17 @@ export default function Home() {
         })
         .then(res => {
           setCartItems(res.data.cart)
+          setCartItemsQuantity(cartItems.length)
           dispatch(userLogin(res.data.email))
         })
         .catch((err) => console.log(err));
     }
-  }, [isLoggedIn, dispatch]);
+  }, [isLoggedIn, dispatch, cartItems.length]);
 
   return (
     <>
       <div style={{ minHeight: "100vh" }}>
-        <Header setSearchText={setSearchText} cartItems={cartItems} />
+        <Header setSearchText={setSearchText} cartItemsQuantity={cartItemsQuantity} />
         <ItemList searchText={searchText} items={items} isLoading={isLoading} hasError={hasError} setCartItems={setCartItems} cartItems={cartItems} />
       </div>
       <Footer />

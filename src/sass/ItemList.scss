@@ -33,6 +33,8 @@ h3 {
 
 .error-text {
   color: red;
+  display: flex;
+  justify-content: center;
   font: {
     size: 30px;
     family: Serif;

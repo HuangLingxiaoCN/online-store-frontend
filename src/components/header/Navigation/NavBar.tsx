@@ -9,8 +9,7 @@ import Register from "./Register";
 import Cart from "./Cart";
 import "../../../sass/NavBar.scss";
 
-
-export default function NavBar({cartItems}: any) {
+export default function NavBar({cartItemsQuantity}: any) {
   const [jwt, setJwt] = useState('')
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function NavBar({cartItems}: any) {
   let returnedComponent = jwt ? (
     <div className="navbar-container">
       <Link to="/cart">
-        <Cart cartItems={cartItems} />
+        <Cart cartItemsQuantity={cartItemsQuantity} />
       </Link>
       <Link to="/profile">
         <Profile />

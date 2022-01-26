@@ -7,7 +7,9 @@ import "../../sass/Item.scss";
 import { RootState } from "../../redux/Types";
 
 export default function Item(props: any) {
-  const { imageUrl, name, genre, price, description } = props;
+  // _id is needed to get productId
+  const { imageUrl, name, genre, price, description, _id } = props;
+  const productId = _id;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const email = useSelector((state: RootState) => state.email);
   const navigate = useNavigate();
@@ -25,8 +27,7 @@ export default function Item(props: any) {
     } else {
       const data = {
         email: email,
-        productName: name,
-        quantity: 1,
+        productId
       };
 
       const jwt = Cookies.get("jwt");
@@ -43,11 +44,6 @@ export default function Item(props: any) {
 
         axios
           .patch(url, data, config)
-          .then((res) => {
-            // after adding item to cart, you also need to 
-            // update the header to show the updates
-            props.setCartItems([...props.cartItems, res.data])
-          })
           .catch((error) => console.log(error));
       } else {
         throw new Error("JWT is not defined in cookies");
