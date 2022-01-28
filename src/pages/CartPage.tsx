@@ -44,7 +44,6 @@ export default function CartPage() {
         {cartItems.map((item: any) => {
           return <CartItem item={item} key={item._id} />
         })}
-        {console.log(cartItems)}
       </div>
       <button>Check Out</button>
     </React.Fragment>

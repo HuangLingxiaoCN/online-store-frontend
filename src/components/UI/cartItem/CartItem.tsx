@@ -1,7 +1,33 @@
+import axios from "axios";
+
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/Types";
+
 import "../../../sass/CartItem.scss";
 
 export default function CartItem(props: any) {
-  const { imageUrl, productName, price, quantity } = props.item;
+  const { imageUrl, productName, price, quantity, _id } = props.item;
+
+  // Seems like in cartPage if refresh it cannot get the email from redux
+  const email = useSelector((state: RootState) => state.email)
+
+  const removeCartItemHandler = () => {
+    // 
+    axios({
+      url: "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/delete",
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      data: {
+        email,
+        itemId: _id
+      }
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
 
   return (
     <div className="cartItem-container">
@@ -21,6 +47,7 @@ export default function CartItem(props: any) {
         {quantity !== 10 && <option value="10">10</option>}
       </select>
       <p className="cartItem-price">Price: €{price * quantity}</p>
+      <button onClick={removeCartItemHandler}>Remove</button>
     </div>
   );
 }
