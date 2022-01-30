@@ -6,7 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
-import CartItem from '../components/UI/cart/CartItem'
+import CartList from '../components/UI/cart/CartList'
 import "../sass/ShoppingCart.scss";
 
 export default function CartPage() {
@@ -42,9 +42,7 @@ export default function CartPage() {
       </button>
       <div className="shopping-cart-container">
         <h1>{cartItems.length} items in basket</h1>
-        {cartItems.map((item: any) => {
-          return <CartItem item={item} key={item._id} />
-        })}
+        <CartList cartItems={cartItems} setCartItems={setCartItems} />
       </div>
       <button>Check Out</button>
     </React.Fragment>

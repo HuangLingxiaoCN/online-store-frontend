@@ -50,7 +50,7 @@ export default function Home() {
         })
         .catch((err) => console.log(err));
     }
-  }, [isLoggedIn, dispatch, cartItems.length]);
+  }, [isLoggedIn, dispatch, cartItems]);
 
   return (
     <>

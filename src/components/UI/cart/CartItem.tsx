@@ -8,23 +8,23 @@ import "../../../sass/CartItem.scss";
 export default function CartItem(props: any) {
   const jwt: any = Cookies.get("jwt");
   const { imageUrl, productName, price, quantity, _id } = props.item;
-  const [email, setEmail] = useState("")
+  const cartItems = props.cartItems;
+  const [email, setEmail] = useState("");
 
   async function getUserEmail() {
     if (!jwt) throw new Error("jwt is not found in cookies!");
-      const res: any = await axios(
-        "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
-        {
-          headers: { "x-auth-token": jwt },
-        }
-      );
-      return res.data.email;
+    const res: any = await axios(
+      "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
+      {
+        headers: { "x-auth-token": jwt },
+      }
+    );
+    return res.data.email;
   }
 
-  getUserEmail().then(data => setEmail(data))
+  getUserEmail().then((data) => setEmail(data));
 
   const removeCartItemHandler = () => {
-    // 
     axios({
       url: "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/delete",
       method: "PATCH",
@@ -34,14 +34,16 @@ export default function CartItem(props: any) {
       },
       data: {
         email,
-        itemId: _id
-      }
+        itemId: _id,
+      },
     })
-      .then(res => { 
-        console.log(res)
-      })
-      .catch(err => console.log(err))
-  }
+      .then((res) =>
+        props.setCartItems(
+          cartItems.filter((item: any) => item._id !== res.data._id)
+        )
+      )
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="cartItem-container">
