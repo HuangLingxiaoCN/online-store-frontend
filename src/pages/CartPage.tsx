@@ -6,10 +6,11 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
-import CartItem from '../components/UI/cartItem/CartItem'
+import CartItem from '../components/UI/cart/CartItem'
 import "../sass/ShoppingCart.scss";
 
 export default function CartPage() {
+  // For updating UI
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 

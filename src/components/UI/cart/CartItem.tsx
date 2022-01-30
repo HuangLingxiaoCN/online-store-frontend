@@ -1,15 +1,27 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/Types";
+import { useState } from "react";
 
 import "../../../sass/CartItem.scss";
 
 export default function CartItem(props: any) {
+  const jwt: any = Cookies.get("jwt");
   const { imageUrl, productName, price, quantity, _id } = props.item;
+  const [email, setEmail] = useState("")
 
-  // Seems like in cartPage if refresh it cannot get the email from redux
-  const email = useSelector((state: RootState) => state.email)
+  async function getUserEmail() {
+    if (!jwt) throw new Error("jwt is not found in cookies!");
+      const res: any = await axios(
+        "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
+        {
+          headers: { "x-auth-token": jwt },
+        }
+      );
+      return res.data.email;
+  }
+
+  getUserEmail().then(data => setEmail(data))
 
   const removeCartItemHandler = () => {
     // 
@@ -25,7 +37,9 @@ export default function CartItem(props: any) {
         itemId: _id
       }
     })
-      .then(res => console.log(res))
+      .then(res => { 
+        console.log(res)
+      })
       .catch(err => console.log(err))
   }
 
