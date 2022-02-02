@@ -9,10 +9,11 @@ import CartPage from './pages/CartPage';
 import './sass/App.scss';
 
 /*
-  TODO: 3. Cart items list
-        4. Listing items list
+  TODO: 1. Listing items list
         
 */
+
+// App.tsx component contains all the React Routes in the application
 function App() {
 
   return (

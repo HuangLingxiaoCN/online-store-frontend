@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -48,14 +48,13 @@ export default function LoginPage() {
     });
   };
 
-  let result: any = <div></div>;
+  useEffect(() => {
+    if(loggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate, loggedIn])
 
-  if (loggedIn) {
-    navigate("/", { replace: true });
-  }
-
-  if (!loggedIn) {
-    result = (
+    return (
       <div className="form-container">
         <h1>Login</h1>
         <form onSubmit={submitHandler}>
@@ -72,7 +71,4 @@ export default function LoginPage() {
         </form>
       </div>
     );
-  }
-
-  return result;
 }
