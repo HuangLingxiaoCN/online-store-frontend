@@ -12,11 +12,13 @@ import "../../../sass/NavBar.scss";
 export default function NavBar({cartItemsQuantity}: any) {
   const [jwt, setJwt] = useState('')
 
+  console.log(cartItemsQuantity)
+
   useEffect(() => {
     const jwt = Cookies.get("jwt")
     if(jwt) {
       setJwt(jwt)
-    }
+    } 
   }, [])
 
   let returnedComponent = jwt ? (
@@ -27,7 +29,7 @@ export default function NavBar({cartItemsQuantity}: any) {
       <Link to="/profile">
         <Profile />
       </Link>
-      <Logout setJwt={setJwt} />
+      <Logout setJwt={setJwt}/>
     </div>
   ) : (
     <div className="navbar-container">

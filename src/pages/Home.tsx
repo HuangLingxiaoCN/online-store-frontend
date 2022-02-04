@@ -7,7 +7,7 @@ import Header from "../components/header/Header";
 import { Footer } from "../components/footer/Footer";
 import ItemList from "../components/body/ItemList";
 import { RootState } from "../redux/Types";
-import { userLogin } from "../redux/Action";
+import { userLogin } from "../redux/Actions";
 
 export default function Home() {
   const [items, setItems] = useState<any>([]);
@@ -58,7 +58,8 @@ export default function Home() {
         })
         .catch((err) => console.log(err));
     }
-  }, [isLoggedIn, dispatch, cartItems]);
+
+  }, [isLoggedIn, cartItems.length, dispatch]);
 
   return (
     <>

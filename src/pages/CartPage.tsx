@@ -14,8 +14,9 @@ export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-  //Can't perform a React state update on an unmounted component.
+  // Can't perform a React state update on an unmounted component.
   useEffect(() => {
+    
     // get all cart items from the user
     const jwt: any = Cookies.get("jwt");
     axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {

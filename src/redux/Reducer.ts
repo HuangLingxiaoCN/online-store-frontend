@@ -6,11 +6,9 @@ const jwt: any = Cookies.get("jwt");
 // When mounting in the application, if the jwt token exists,
 // we should get the user email using axios
 
-let userEmail = ""
-
 const initialState = {
   isLoggedIn: jwt ? true : false,
-  email: userEmail
+  email: ""
 };
 
 export default function reducerFunction(state = initialState, action: any) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "../../../sass/CartItem.scss";
 
@@ -11,21 +11,29 @@ export default function CartItem(props: any) {
   const cartItems = props.cartItems;
   const [email, setEmail] = useState("");
 
-  async function getUserEmail() {
-    if (!jwt) throw new Error("jwt is not found in cookies!");
-    const res: any = await axios(
-      "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
-      {
-        headers: { "x-auth-token": jwt },
-      }
-    );
-    return res.data.email;
-  }
+  useEffect(() => {
+    async function getUserEmail() {
+      if (!jwt) throw new Error("jwt is not found in cookies!");
+      const res: any = await axios(
+        "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
+        {
+          headers: { "x-auth-token": jwt },
+        }
+      );
+      return res.data.email;
+    }
+  
+    getUserEmail().then((data) => setEmail(data));
 
-  getUserEmail().then((data) => setEmail(data));
+    // cleanup function to prevent 
+    // "Can't perform a React state update on an unmounted component" Error
+    return () => {
+      setEmail("");
+    }
+  }, [jwt])
 
   const changeQuantityHandler = () => {
-    // when user select a quantity, send an axios request to backend
+    // TODO: when user select a quantity, send an axios request to backend
   }
 
   const removeCartItemHandler = () => {

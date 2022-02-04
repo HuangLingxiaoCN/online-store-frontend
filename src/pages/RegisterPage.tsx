@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import { userLogin } from "../redux/Action";
+import { userLogin } from "../redux/Actions";
 import "../sass/Form.scss";
 
 export default function RegisterPage() {

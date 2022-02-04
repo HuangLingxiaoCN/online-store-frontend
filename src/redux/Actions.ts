@@ -10,4 +10,3 @@ export const userLogin = (email: any) => {
 export const userLogout = {
   type: LOGOUT,
 };
-

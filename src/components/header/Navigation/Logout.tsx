@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
-import { userLogout } from "../../../redux/Action";
+import { userLogout } from "../../../redux/Actions";
 import LinkButton from "../../UI/linkButton/LinkButton";
 
 export default function Logout({setJwt}: any) {

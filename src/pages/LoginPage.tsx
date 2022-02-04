@@ -6,7 +6,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 import { RootState } from "../redux/Types";
-import { userLogin } from "../redux/Action";
+import { userLogin } from "../redux/Actions";
 import "../sass/Form.scss";
 
 export default function LoginPage() {
@@ -48,27 +48,60 @@ export default function LoginPage() {
     });
   };
 
+  // let result: any = <div></div>;
+
+  // if (loggedIn) {
+  //   navigate("/", { replace: true });
+  // }
+
+  // if (!loggedIn) {
+  //   result = (
+  //     <div className="form-container">
+  //       <h1>Login</h1>
+  //       <form onSubmit={submitHandler}>
+  //         <label htmlFor="email">Email</label>
+  //         <input type="email" id="email" ref={emailRef} className="form-input" />
+  //         <label htmlFor="password">Password</label>
+  //         <input type="password" id="password" ref={passwordRef} className="form-input" />
+  //         <button type="submit">Log in</button>
+  //         <Link to="/">
+  //           <button type="button" className="backBtn">
+  //             Go Back To Store
+  //           </button>
+  //         </Link>
+  //       </form>
+  //     </div>
+  //   );
+  // }
+
+  // return result;
+
   useEffect(() => {
-    if(loggedIn) {
+    if (loggedIn) {
       navigate("/", { replace: true });
     }
-  }, [navigate, loggedIn])
+  }, [navigate, loggedIn]);
 
-    return (
-      <div className="form-container">
-        <h1>Login</h1>
-        <form onSubmit={submitHandler}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" ref={emailRef} className="form-input" />
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" ref={passwordRef} className="form-input" />
-          <button type="submit">Log in</button>
-          <Link to="/">
-            <button type="button" className="backBtn">
-              Go Back To Store
-            </button>
-          </Link>
-        </form>
-      </div>
-    );
+  return (
+    <div className="form-container">
+      <h1>Login</h1>
+      <form onSubmit={submitHandler}>
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" ref={emailRef} className="form-input" />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          ref={passwordRef}
+          className="form-input"
+        />
+        <button type="submit">Log in</button>
+        <Link to="/">
+          <button type="button" className="backBtn">
+            Go Back To Store
+          </button>
+        </Link>
+      </form>
+    </div>
+  );
 }

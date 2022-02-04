@@ -44,7 +44,18 @@ export default function Item(props: any) {
 
         axios
           .patch(url, data, config)
+          .then(res => {
+            // if props.cartItems alright has the item with same productId
+            // then don't update UI
+            let itemInCart = props.cartItems.find((i:any) => i.productId === res.data.productId);
+
+            if(!itemInCart) {
+              props.setCartItems([...props.cartItems, res.data]);
+            }
+
+          })
           .catch((error) => console.log(error));
+
       } else {
         throw new Error("JWT is not defined in cookies");
       }
