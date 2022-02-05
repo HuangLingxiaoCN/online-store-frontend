@@ -12,10 +12,10 @@ import './sass/App.scss';
   TODO: 1. fix bugs:
           - cannot login after logout (\/)
           - add to cart does not update cart quantity button in nav bar (\/)
-          - registering new user does not render the UI
-        2. Implement "add to cart" function in ItemDetail page
+          - registering new user does not render the header UI (\/)
+        2. Implement "add to cart" functionality in ItemDetail page
         3. Add a "save" button in cart page to save the items quantity changes
-        3. Listing items list
+        3. User's listings UI
         
 */
 

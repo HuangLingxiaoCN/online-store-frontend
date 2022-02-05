@@ -21,7 +21,7 @@ export default function Home() {
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const dispatch = useDispatch();
 
-  // Warning: Can't perform a React state update on an unmounted component.
+  // Warning(solved): Can't perform a React state update on an unmounted component.
   useEffect(() => {
     axios("https://fierce-spring-store-backend.herokuapp.com/api/products")
       .then((res) => {
@@ -67,6 +67,7 @@ export default function Home() {
         <Header
           setSearchText={setSearchText}
           cartItemsQuantity={cartItemsQuantity}
+          setCartItemsQuantity={setCartItemsQuantity}
         />
         <ItemList
           searchText={searchText}

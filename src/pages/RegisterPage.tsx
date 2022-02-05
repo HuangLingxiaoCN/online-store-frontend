@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { userLogin } from "../redux/Actions";
 import "../sass/Form.scss";
 
+// After registeration, the header UI is not rendered correctly
+
 export default function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,12 +60,14 @@ export default function RegisterPage() {
                 {
                   headers: { "x-auth-token": jwt },
                 }
-              ).catch((err) => console.log(err));
-              dispatch(userLogin);
+              )
+              .catch((err) => console.log(err));
+              dispatch(userLogin(email));
             }
           })
           .catch((err) => console.log(err));
 
+        // After regisration, redirect to Home page. Should also rerender header UI
         navigate("/", { replace: true });
       })
       .catch((err) => {
