@@ -1,4 +1,48 @@
-.shopping-cart-container {
+@mixin cart-action {
+  text-align: right;
+  margin-right: 10vw;
+}
+
+.shopping-cart-body {
+  min-height: 100vh;
+}
+
+.items-container {
   text-align: left;
-  margin-left: 15vw;
+  margin-left: 10vw;
+}
+
+.shopping-cart-totalPrice {
+  @include cart-action;
+  font-size: 20px;
+}
+
+.shopping-cart-actions {
+  @include cart-action;
+}
+
+.cart-action-btn {
+  padding: 15px;
+  font-size: 15px;
+  margin: 10px 5px;
+  border: 1px solid red;
+}
+
+.update {
+  color: red;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+  }
+}
+
+.check-out {
+  background-color: red;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.8)
+  }
 }

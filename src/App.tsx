@@ -14,9 +14,10 @@ import './sass/App.scss';
           - add to cart does not update cart quantity button in nav bar (\/)
           - registering new user does not render the header UI (\/)
         2. Implement "add to cart" functionality in ItemDetail page (\/)
-        3. Add a "save" button in cart page to save the items quantity changes
+        3. Style Cart page and implement change cart item quantity functionality (\/)
         4. Add more user feedbacks for adding item to cart actions (like a pop up window)
         5. User's listings UI
+        6. User's profile
         
 */
 

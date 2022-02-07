@@ -27,7 +27,6 @@ export default function ItemDetail() {
         email: email,
         productId,
       };
-
       const jwt = Cookies.get("jwt");
       if (jwt !== undefined) {
         const config = {

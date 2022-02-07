@@ -1,14 +1,18 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import "../../../sass/CartItem.scss";
 
 export default function CartItem(props: any) {
   const jwt: any = Cookies.get("jwt");
+  // let quantity: number = props.item.quantity;
   const { imageUrl, productName, price, quantity, _id } = props.item;
+  const singlePrice = price / quantity;
   const cartItems = props.cartItems;
+  const [totalPrice, setTotalPrice] = useState(price);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -22,19 +26,47 @@ export default function CartItem(props: any) {
       );
       return res.data.email;
     }
-  
-    getUserEmail().then((data) => setEmail(data));
 
-    // cleanup function to prevent 
+    getUserEmail().then((data) => setEmail(data));
+    // cleanup function to prevent
     // "Can't perform a React state update on an unmounted component" Error
     return () => {
       setEmail("");
-    }
-  }, [jwt])
+    };
+  }, [jwt]);
 
-  const changeQuantityHandler = () => {
-    // TODO: when user select a quantity, send an axios request to backend
-  }
+  const changeQuantityHandler = (event: any) => {
+    // TODO: Enable user to change the cart item quantity
+    const newCartItems = cartItems.map((item: any) => {
+      // check if the item id is the right one user is finding
+      if (item._id === _id) {
+        axios({
+          url: "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/modify",
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
+          data: {
+            email,
+            itemId: _id,
+            quantity: event.target.value,
+          },
+        })
+          .then((res) => {
+            setTotalPrice(res.data.price);
+          })
+          .catch((Error) => console.log(Error));
+        
+        // quantity for dropdown UI and to update UI correctly you must use "event.target.value"
+        return { ...item, quantity: event.target.value, price: singlePrice*event.target.value };
+      }
+
+      return item;
+    });
+
+    props.setCartItems(newCartItems);
+  };
 
   const removeCartItemHandler = () => {
     axios({
@@ -60,9 +92,15 @@ export default function CartItem(props: any) {
   return (
     <div className="cartItem-container">
       <img src={imageUrl} alt={productName} className="cartItem-image" />
-      <p className="cartItem-name">{productName}</p>
+      <div className="cartItem-name-container">
+        <p className="cartItem-name">{productName}</p>
+      </div>
       {/* Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>. */}
-      <select value={quantity} onChange={changeQuantityHandler} className="cartItem-quantity">
+      <select
+        value={quantity}
+        onChange={changeQuantityHandler}
+        className="cartItem-quantity"
+      >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -74,8 +112,12 @@ export default function CartItem(props: any) {
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-      <p className="cartItem-price">Price: €{price * quantity}</p>
-      <button onClick={removeCartItemHandler}>Remove</button>
+      <p className="cartItem-total">Total: €{totalPrice.toFixed(2)}</p>
+      <FontAwesomeIcon
+        icon={faTimes}
+        className="cartItem-delete"
+        onClick={removeCartItemHandler}
+      />
     </div>
   );
 }

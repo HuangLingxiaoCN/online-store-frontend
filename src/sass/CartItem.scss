@@ -1,3 +1,9 @@
+$default-margin: 20px;
+
+@mixin default-margin-left {
+  margin-left: $default-margin;
+}
+
 .cartItem-image {
   width: 170px;
   height: 170px;
@@ -12,15 +18,37 @@
   align-items: flex-start;
 }
 
+.cartItem-name-container {
+  width: 40vw;
+  height: 170px;
+}
+
 .cartItem-name {
   font: {
     size: 25px;
     weight: 400;
     family: sans-serif;
   }
-  margin-left: 20px;
+  @include default-margin-left;
 }
 
-// .cartItem-quantity {
+.cartItem-quantity {
+  @include default-margin-left;
+}
 
-// }
+.cartItem-single {
+  @include default-margin-left;
+}
+
+.cartItem-total {
+  @include default-margin-left;
+}
+
+.cartItem-delete {
+  @include default-margin-left;
+  font-size: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
