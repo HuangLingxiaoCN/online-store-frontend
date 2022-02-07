@@ -17,7 +17,7 @@ export default function Item(props: any) {
   const itemDetailHandler = () => {
     // passing props to detail page
     navigate("/detail", {
-      state: { imageUrl, name, genre, price, description },
+      state: { imageUrl, name, genre, price, description, productId, email },
     });
   };
 
