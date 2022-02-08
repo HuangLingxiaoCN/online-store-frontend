@@ -1,6 +1,11 @@
-@mixin cart-action {
+@mixin cart-align-right {
   text-align: right;
   margin-right: 10vw;
+}
+
+@mixin cart-align-left {
+  text-align: left;
+  margin-left: 10vw;
 }
 
 .shopping-cart-body {
@@ -8,17 +13,16 @@
 }
 
 .items-container {
-  text-align: left;
-  margin-left: 10vw;
+  @include cart-align-left;
 }
 
 .shopping-cart-totalPrice {
-  @include cart-action;
+  @include cart-align-right;
   font-size: 20px;
 }
 
 .shopping-cart-actions {
-  @include cart-action;
+  @include cart-align-right;
 }
 
 .cart-action-btn {
@@ -45,4 +49,8 @@
     cursor: pointer;
     filter: brightness(0.8)
   }
+}
+
+.cart-empty-message {
+  @include cart-align-left;
 }
