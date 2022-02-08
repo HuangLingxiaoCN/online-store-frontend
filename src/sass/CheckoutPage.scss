@@ -1,0 +1,29 @@
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  width: 70%;
+  font: {
+    size: 20px;
+    family: sans-serif;
+  }
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 20px;
+}
+
+.checkout-totalPrice {
+  width: 100%;
+  text-align: right;
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-right: 35vw;
+}

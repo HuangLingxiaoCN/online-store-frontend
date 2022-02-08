@@ -70,7 +70,9 @@ export default function CartPage() {
           <p>Total Price: €{totalPrice.toFixed(2)}</p>
         </div>
         <div className="shopping-cart-actions">
-          <button className="cart-action-btn check-out">Check Out</button>
+          <button className="cart-action-btn check-out" onClick={() => {
+            navigate("/order", { state: cartItems });
+          } }>Check Out</button>
         </div>
       </div>
       <Footer />

@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage';
 import ItemDetail from './pages/ItemDetail';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import './sass/App.scss';
 
 /*
@@ -15,9 +16,10 @@ import './sass/App.scss';
           - registering new user does not render the header UI (\/)
         2. Implement "add to cart" functionality in ItemDetail page (\/)
         3. Style Cart page and implement change cart item quantity functionality (\/)
-        4. Add more user feedbacks for adding item to cart actions (like a pop up window)
-        5. User's listings UI
-        6. User's profile
+        4. Add more user feedbacks for adding item to cart actions (optional: like a pop up window)
+        5. Checkout function page and clear all cart items afterwards
+        6. User's listings UI
+        7. User's profile
         
 */
 
@@ -33,6 +35,7 @@ function App() {
         <Route path="/detail" element={<ItemDetail />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/order" element={<CheckoutPage />} />
       </Routes>
     </div>
   );
