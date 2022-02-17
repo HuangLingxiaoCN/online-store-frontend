@@ -17,7 +17,7 @@ import './sass/App.scss';
         2. Implement "add to cart" functionality in ItemDetail page (\/)
         3. Style Cart page and implement change cart item quantity functionality (\/)
         4. Add more user feedbacks for adding item to cart actions (optional: like a pop up window)
-        5. Checkout function page and clear all cart items afterwards
+        5. Checkout function page and clear all cart items afterwards (\/)
         6. User's listings UI
         7. User's profile
         

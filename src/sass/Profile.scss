@@ -1,3 +1,40 @@
-.profile-container {
-  min-height: 100vh;
+.profile-body-container {
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 40px;
+  margin-left: 40px;
 }
+
+.profile-bucket {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow:  5px 5px 10px;
+
+  img {
+    height: 125px;
+    border-radius: 10px;
+  }
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+
+  .profile-username {
+    font: {
+      weight: 900;
+      size: 20px;
+    }
+    margin-bottom: 5px;
+  }
+
+  .profile-useremail {
+    color: grey;
+  }
+}
+
