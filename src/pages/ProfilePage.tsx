@@ -1,17 +1,16 @@
-import axios from "axios";
-import Cookies from "js-cookie";
+// import axios from "axios";
+// import Cookies from "js-cookie";
 import { useLocation, useNavigate } from "react-router";
-
-import { Footer } from "../components/footer/Footer";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { Footer } from "../components/footer/Footer";
 import profile from "../assets/profile.jpg";
+import Listings from "../components/UI/listings/Listings";
 import "../sass/Profile.scss";
 
 export default function ProfilePage() {
-  const jwt: any = Cookies.get("jwt");
-  // const [userName, setUserName] = useState("");
-  // const [listings, setListings] = useState([]);
+  // const jwt: any = Cookies.get("jwt");
 
   const location: any = useLocation();
   const navigate = useNavigate();
@@ -42,6 +41,7 @@ export default function ProfilePage() {
         </div>
         {/* Listings */}
       <h2>Listings: </h2>
+      <Listings listings={listings} />
       </div>
       <Footer />
     </div>

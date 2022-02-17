@@ -1,4 +1,6 @@
 .item-container {
+  max-width: 200px;
+  min-width: 180px;
   border-radius: 10px;
   margin: 10px;
   &:hover {
@@ -7,19 +9,19 @@
 }
 
 .image {
-  width: 14vw;
+  width: 100%;
   min-width: 180px;
   height: 15rem;
   border: 0.5px solid black;
   border-radius: 10px;
+
   &:hover {
     cursor: pointer;
   }
 }
 
 .itemName {
-  width: 14vw;
-  min-width: 180px;
+  width: 100%;
   font-family: "sans-serif";
   // The trick to hide long item title
   overflow: hidden;
@@ -29,6 +31,11 @@
     cursor: pointer;
     text-decoration: underline;
   }
+}
+
+.item-genre {
+  display: flex;
+  justify-content: center;
 }
 
 .add-to-cart {

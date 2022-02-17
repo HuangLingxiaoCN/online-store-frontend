@@ -10,9 +10,14 @@ h3 {
 }
 
 .list-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  margin: 0 10px;
+  // display: grid;
+  // grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  margin-left: 5rem;
 }
 
 .loader {

@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function listingItem() {
+export default function ListingItem() {
   return (
-    <div>listingItem</div>
+    <div></div>
   )
 }

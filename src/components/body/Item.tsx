@@ -73,7 +73,7 @@ export default function Item(props: any) {
       <div className="itemName" onClick={itemDetailHandler}>
         <h4 title={name}>{name}</h4>
       </div>
-      <p>{genre}</p>
+      <p className="item-genre">{genre}</p>
       <div className="add-to-cart">
         <h2>€{price}</h2>
         <button className="add-to-cart-btn" onClick={addToCartHandler}>
