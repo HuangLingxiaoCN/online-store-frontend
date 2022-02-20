@@ -5,7 +5,6 @@ import "../../../sass/ListingItem.scss";
 export default function ListingItem(props: any) {
   const { listing } = props;
 
-  console.log(props);
   return (
     <div className="listing-container">
       <div className="listing-image-wrap">

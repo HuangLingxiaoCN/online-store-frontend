@@ -85,7 +85,7 @@ export default function RegisterPage() {
         <input type="email" id="email" ref={emailRef} className="form-input" />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" ref={passwordRef} className="form-input" />
-        <button type="submit">Register</button>
+        <button type="submit" className="login-register-btn">Register</button>
         <Link to="/">
           <button type="button" className="backBtn">
             Go Back To Store

@@ -18,8 +18,9 @@ import './sass/App.scss';
         3. Style Cart page and implement change cart item quantity functionality (\/)
         4. Add more user feedbacks for adding item to cart actions (optional: like a pop up window)
         5. Checkout function page and clear all cart items afterwards (\/)
-        6. User's listings UI
-        7. User's profile
+        6. User's listings UI (\/)
+        7. Upload Listing
+        8. Delete Listing
         
 */
 

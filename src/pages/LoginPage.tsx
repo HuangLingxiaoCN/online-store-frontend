@@ -67,7 +67,7 @@ export default function LoginPage() {
           ref={passwordRef}
           className="form-input"
         />
-        <button type="submit">Log in</button>
+        <button type="submit" className="login-register-btn">Log in</button>
         <Link to="/">
           <button type="button" className="backBtn">
             Go Back To Store
