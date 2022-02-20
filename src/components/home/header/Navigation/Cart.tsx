@@ -1,4 +1,4 @@
-import '../../../sass/CartBtn.scss'
+import "../../../../sass/CartBtn.scss";
 
 export default function Cart({cartItemsQuantity}: any) {
 

@@ -1,5 +1,5 @@
 import Item from "./Item";
-import "../../sass/ItemList.scss";
+import "../../../sass/ItemList.scss";
 
 export default function ItemList({ searchText, items, isLoading, hasError, setCartItems, cartItems }: any) {
   let filteredItems;

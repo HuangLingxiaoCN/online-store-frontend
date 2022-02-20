@@ -1,4 +1,4 @@
-.item-container {
+.listing-container {
   max-width: 200px;
   min-width: 180px;
   border-radius: 10px;
@@ -8,19 +8,29 @@
   }
 }
 
-.image {
+.listing-image-wrap {
+  position: relative;
+}
+
+.listing-delete {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  font-size: 25px;
+  color: rgb(185, 56, 56);
+  z-index: 100;
+  cursor: pointer;
+}
+
+.listing-image {
   width: 100%;
   // min-width: 180px;
   height: 15rem;
   border: 0.5px solid black;
   border-radius: 10px;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
-.itemName {
+.listing-name {
   width: 100%;
   font-family: "sans-serif";
   // The trick to hide long item title
@@ -28,31 +38,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   &:hover {
-    cursor: pointer;
     text-decoration: underline;
-  }
-}
-
-.item-genre {
-  display: flex;
-  justify-content: center;
-}
-
-.add-to-cart {
-  display: flex;
-  justify-content: space-around;
-}
-
-.add-to-cart-btn {
-  height: 40px;
-  padding: 5px 10px;
-  background-color: rgb(122, 73, 73);
-  color: white;
-  border-radius: 10px;
-  align-self: center;
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.8)
   }
 }

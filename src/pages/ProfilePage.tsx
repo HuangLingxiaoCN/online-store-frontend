@@ -4,9 +4,9 @@ import { useLocation, useNavigate } from "react-router";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Footer } from "../components/footer/Footer";
+import { Footer } from "../components/UI/footer/Footer";
 import profile from "../assets/profile.jpg";
-import Listings from "../components/UI/listings/Listings";
+import Listings from "../components/profile/listings/Listings";
 import "../sass/Profile.scss";
 
 export default function ProfilePage() {
@@ -16,7 +16,6 @@ export default function ProfilePage() {
   const navigate = useNavigate();
   const {userEmail, userName, listings} = location.state;
 
-  console.log(listings);
   return (
     <div>
       <button

@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 import Login from "./Login";
 import Logout from "./Logout";
 import Profile from "./Profile";
 import Register from "./Register";
 import Cart from "./Cart";
-import "../../../sass/NavBar.scss";
-import { RootState } from "../../../redux/Types";
-import axios from "axios";
+import { RootState } from "../../../../redux/Types";
+
+import "../../../../sass/NavBar.scss";
 
 export default function NavBar({
   cartItemsQuantity,

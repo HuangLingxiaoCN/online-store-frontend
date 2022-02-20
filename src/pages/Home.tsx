@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-import Header from "../components/header/Header";
-import { Footer } from "../components/footer/Footer";
-import ItemList from "../components/body/ItemList";
+import Header from "../components/home/header/Header";
+import { Footer } from "../components/UI/footer/Footer";
+import ItemList from "../components/home/body/ItemList";
 import { RootState } from "../redux/Types";
 import { userLogin } from "../redux/Actions";
+
+import '../sass/Home.scss'
 
 export default function Home() {
   const [items, setItems] = useState<any>([]);

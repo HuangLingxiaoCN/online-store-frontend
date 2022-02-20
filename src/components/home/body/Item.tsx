@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import "../../sass/Item.scss";
-import { RootState } from "../../redux/Types";
+import "../../../sass/Item.scss";
+import { RootState } from "../../../redux/Types";
 
 export default function Item(props: any) {
   // _id is needed to get productId

@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
-import CartList from "../components/UI/cart/CartList";
-import { Footer } from "../components/footer/Footer";
+import CartList from "../components/cart/CartList";
+import { Footer } from "../components/UI/footer/Footer";
 import { RootState } from "../redux/Types";
 import "../sass/ShoppingCart.scss";
 

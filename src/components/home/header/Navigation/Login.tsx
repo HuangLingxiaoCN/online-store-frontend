@@ -1,4 +1,4 @@
-import LinkButton from '../../UI/linkButton/LinkButton'
+import LinkButton from '../../../UI/linkButton/LinkButton'
 
 export default function Login() {
   return (

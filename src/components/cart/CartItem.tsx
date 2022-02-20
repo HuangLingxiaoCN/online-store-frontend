@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import "../../../sass/CartItem.scss";
+import "../../sass/CartItem.scss";
 
 export default function CartItem(props: any) {
   const jwt: any = Cookies.get("jwt");
