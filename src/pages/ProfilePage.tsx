@@ -40,7 +40,7 @@ export default function ProfilePage() {
         </div>
         {/* Listings */}
       <h2>Listings: </h2>
-      <Listings listings={listings} />
+      <Listings listings={listings} userEmail={userEmail} />
       </div>
       <Footer />
     </div>
