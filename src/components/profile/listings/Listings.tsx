@@ -3,6 +3,7 @@ import NewListing from "./NewListing"
 import '../../../sass/Listings.scss'
 
 export default function Listings({listings}: any) {
+
   return (
     <div className="listings-container">
       {listings.map((listing: any) => {

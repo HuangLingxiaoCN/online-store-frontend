@@ -19,7 +19,7 @@ import './sass/App.scss';
         4. Add more user feedbacks for adding item to cart actions (optional: like a pop up window)
         5. Checkout function page and clear all cart items afterwards (\/)
         6. User's listings UI (\/)
-        7. Upload Listing
+        7. Upload Listing (\/)
         8. Delete Listing
         
 */
