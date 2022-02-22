@@ -1,12 +1,14 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 
 import "../../../sass/NewListingModal.scss";
 
-export default function NewListingModal({ setModalOpen, email, setListings }: any) {
-  const navigate = useNavigate();
+export default function NewListingModal({
+  setModalOpen,
+  email,
+  setListings,
+}: any) {
   const jwt = Cookies.get("jwt")!;
   const [imageSelected, setImageSelected] = useState<File | string>("");
   const nameRef = useRef(document.createElement("input"));
@@ -54,23 +56,23 @@ export default function NewListingModal({ setModalOpen, email, setListings }: an
               numberInStock: number,
               genre,
             },
-            email
+            email,
           },
         })
           .then((res) => {
             console.log(res);
-            // updating the UI 
-            setModalOpen(false);
+            // updating the UI
 
+            setModalOpen(false);
             // State updating based on current state
             setListings((state: any) => {
               return [...state, res.data];
             });
             // navigate("/profile", { replace: true });
           })
-          .catch((error: Error) => console.log('error from my server', error));
+          .catch((error: Error) => console.log("error from my server", error));
       })
-      .catch((err: Error) => console.log('error from cloudinary', err));
+      .catch((err: Error) => console.log("error from cloudinary", err));
   };
 
   return (

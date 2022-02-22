@@ -41,7 +41,11 @@ export default function NewListing({ setListings }: any) {
       </button>
 
       {modalOpen && (
-        <NewListingModal setModalOpen={setModalOpen} email={email} setListings={setListings} />
+        <NewListingModal
+          setModalOpen={setModalOpen}
+          email={email}
+          setListings={setListings}
+        />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,26 +11,22 @@ import Listings from "../components/profile/listings/Listings";
 import "../sass/Profile.scss";
 
 export default function ProfilePage() {
-  // const jwt: any = Cookies.get("jwt");
-
-  const location: any = useLocation();
   const navigate = useNavigate();
-  // const { userEmail, userName, listings } = location.state;
-  const [userEmail, setUserEmail] = useState('');
-  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [listings, setListings] = useState([]);
   const jwt = Cookies.get("jwt")!;
 
   useEffect(() => {
-    axios.get("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
-      headers: { "x-auth-token": jwt },
-    })
-      .then(res => {
-        console.log(res.data)
+    axios
+      .get("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
+        headers: { "x-auth-token": jwt },
+      })
+      .then((res) => {
         setUserEmail(res.data.email);
         setUserName(res.data.name);
         setListings(res.data.listings);
-      })
+      });
   }, [jwt]);
 
   return (
@@ -57,7 +53,11 @@ export default function ProfilePage() {
         </div>
         {/* Listings */}
         <h2>Listings: </h2>
-        <Listings listings={listings} userEmail={userEmail} setListings={setListings} />
+        <Listings
+          listings={listings}
+          userEmail={userEmail}
+          setListings={setListings}
+        />
       </div>
       <Footer />
     </div>

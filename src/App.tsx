@@ -20,7 +20,7 @@ import './sass/App.scss';
         5. Checkout function page and clear all cart items afterwards (\/)
         6. User's listings UI (\/)
         7. Upload Listing and update the UI (\/)
-        8. Delete Listing functionality with a popup warning window and update the UI
+        8. Delete Listing functionality with a popup warning window and update the UI (\/)
         
 */
 
