@@ -30,7 +30,6 @@ export default function DeleteListingModal({
         setDeleteModalOpen(false);
         setListings((state: any) => {
           const newState = state.filter((l: any) => l._id !== _id);
-          console.log(newState);
           return newState;
         });
       })

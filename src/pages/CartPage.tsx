@@ -62,8 +62,6 @@ export default function CartPage() {
 
   return (
     <React.Fragment>
-      {console.log(cartItems)}
-
       <div className="shopping-cart-body">
         <button
           onClick={() => {

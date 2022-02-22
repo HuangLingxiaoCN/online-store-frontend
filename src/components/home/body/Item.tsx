@@ -8,7 +8,7 @@ import { RootState } from "../../../redux/Types";
 
 export default function Item(props: any) {
   // _id is needed to get productId
-  const { imageUrl, name, genre, price, description, _id } = props;
+  const { imageUrl, name, genre, numberInStock, price, description, _id } = props;
   const productId = _id;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const email = useSelector((state: RootState) => state.email);
@@ -17,7 +17,7 @@ export default function Item(props: any) {
   const itemDetailHandler = () => {
     // passing props to detail page
     navigate("/detail", {
-      state: { imageUrl, name, genre, price, description, productId, email },
+      state: { imageUrl, name, genre, numberInStock, price, description, productId, email },
     });
   };
 

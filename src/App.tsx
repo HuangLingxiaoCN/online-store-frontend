@@ -21,7 +21,8 @@ import './sass/App.scss';
         6. User's listings UI (\/)
         7. Upload Listing and update the UI (\/)
         8. Delete Listing functionality with a popup warning window and update the UI (\/)
-        
+        9. Display item quantity in ItemDetail page (\/)
+        10. Finally remove all console.log and fixing all bugs (\/)
 */
 
 // App.tsx component contains all the React Routes in the application

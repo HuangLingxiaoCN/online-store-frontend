@@ -60,9 +60,7 @@ export default function NewListingModal({
           },
         })
           .then((res) => {
-            console.log(res);
-            // updating the UI
-
+            // ---- updating the UI ------------------
             setModalOpen(false);
             // State updating based on current state
             setListings((state: any) => {

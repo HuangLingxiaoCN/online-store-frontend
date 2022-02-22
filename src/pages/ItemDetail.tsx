@@ -13,7 +13,7 @@ import "../sass/ItemDetail.scss";
 
 export default function ItemDetail() {
   const { state }: any = useLocation();
-  const { imageUrl, name, genre, price, description } = state;
+  const { imageUrl, name, genre, numberInStock, price, description } = state;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const navigate = useNavigate();
 
@@ -69,6 +69,7 @@ export default function ItemDetail() {
             <h1>{name}</h1>
             <h2 className="price">€{price}</h2>
             <p className="genre">Genre: {genre}</p>
+            <p className="numberInStock">Number In Stock: {numberInStock}</p>
             <p className="description">{description}</p>
             <button
               className="add-to-cart-btn-detail"
