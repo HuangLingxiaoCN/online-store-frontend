@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import NewListingModal from '../../UI/newListingModal/NewListingModal'
-import '../../../sass/NewListing.scss'
+import NewListingModal from "../../UI/newListingModal/NewListingModal";
+import "../../../sass/NewListing.scss";
 
-export default function NewListing() {
+export default function NewListing({ setListings }: any) {
   const jwt = Cookies.get("jwt")!;
   const [modalOpen, setModalOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -32,9 +32,17 @@ export default function NewListing() {
 
   return (
     <div className="newListing-container">
-      <button type="button" className="newListing-btn" onClick={() => setModalOpen(true) }>+</button>
-      
-      {modalOpen && <NewListingModal setModalOpen={setModalOpen} email={email} />}
+      <button
+        type="button"
+        className="newListing-btn"
+        onClick={() => setModalOpen(true)}
+      >
+        +
+      </button>
+
+      {modalOpen && (
+        <NewListingModal setModalOpen={setModalOpen} email={email} setListings={setListings} />
+      )}
     </div>
-  )
+  );
 }

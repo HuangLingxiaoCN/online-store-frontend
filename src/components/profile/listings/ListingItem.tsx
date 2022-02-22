@@ -8,7 +8,6 @@ import "../../../sass/ListingItem.scss";
 export default function ListingItem(props: any) {
   const { listing, userEmail } = props;
   const { _id } = listing;
-  console.log(_id, userEmail);
   const jwt = Cookies.get("jwt")!;
 
   const deleteListing = () => {
