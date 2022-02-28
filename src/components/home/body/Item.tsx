@@ -23,7 +23,7 @@ export default function Item(props: any) {
 
   const addToCartHandler = () => {
     if (!isLoggedIn) {
-      alert("Please fist log in");
+      alert("Please first log in");
     } else {
       const data = {
         email: email,
