@@ -83,7 +83,7 @@ export default function NewListingModal({
             <tbody>
               <tr>
                 <td>
-                  <label htmlFor="imageUrl">Image URL</label>
+                  <label htmlFor="imageUrl">Image</label>
                 </td>
                 <td>
                   <input
