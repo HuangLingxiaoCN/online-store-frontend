@@ -1,11 +1,12 @@
 import { useState } from "react";
 
+import { GenericProps } from "../../../Types";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DeleteListingModal from "../../UI/deleteListingModal/DeleteListingModal";
 import "../../../sass/ListingItem.scss";
 
-export default function ListingItem(props: any) {
+export default function ListingItem(props: GenericProps) {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const { listing, userEmail, setListings } = props;
 

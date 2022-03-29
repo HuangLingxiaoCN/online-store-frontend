@@ -9,12 +9,13 @@ import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
 import CartList from "../components/cart/CartList";
 import { Footer } from "../components/UI/footer/Footer";
-import { RootState } from "../redux/Types";
+import { RootState } from "../redux/ReduxTypes";
+import { GenericItem } from "../Types";
 import "../sass/ShoppingCart.scss";
 
 export default function CartPage() {
   // For updating UI
-  const [cartItems, setCartItems] = useState<any>([]);
+  const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotal] = useState(0);
   const userEmail = useSelector((state: RootState) => state.email);
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function CartPage() {
   // Can't perform a React state update on an unmounted component.
   useEffect(() => {
     // get all cart items from the user
-    const jwt: any = Cookies.get("jwt");
+    const jwt: string = Cookies.get("jwt")!;
     axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
       headers: { "x-auth-token": jwt },
     })
@@ -42,7 +43,7 @@ export default function CartPage() {
   // calculate total price of cart
   useEffect(() => {
     let total = 0;
-    cartItems.forEach((i: any) => {
+    cartItems.forEach((i: GenericItem) => {
       total += i.price;
     });
     setTotal(total);

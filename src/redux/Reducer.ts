@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
-import { LOGIN, LOGOUT } from "./Types";
+import { ActionType } from "./ReduxTypes";
+import { LOGIN, LOGOUT } from "./ReduxTypes";
 
 const jwt: any = Cookies.get("jwt");
 
@@ -11,7 +12,7 @@ const initialState = {
   email: ""
 };
 
-export default function reducerFunction(state = initialState, action: any) {
+export default function reducerFunction(state = initialState, action: ActionType) {
   switch (action.type) {
     case LOGIN:
       return {

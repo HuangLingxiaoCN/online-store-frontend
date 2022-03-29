@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
-import { RootState } from "../redux/Types";
+import { RootState } from "../redux/ReduxTypes";
 import { Footer } from "../components/UI/footer/Footer";
 
 import "../sass/ItemDetail.scss";
@@ -41,7 +41,7 @@ export default function ItemDetail() {
 
         axios
           .patch(url, data, config)
-          .catch((error: any) => console.log(error));
+          .catch((error: Error) => console.log(error));
       } else {
         throw new Error("JWT is not defined in cookies");
       }

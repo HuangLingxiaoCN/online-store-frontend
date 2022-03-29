@@ -1,7 +1,9 @@
 import Item from "./Item";
+import { GenericProps } from "../../../Types";
+import { GenericItem } from "../../../Types";
 import "../../../sass/ItemList.scss";
 
-export default function ItemList({ searchText, items, isLoading, hasError, setCartItems, cartItems }: any) {
+export default function ItemList({ searchText, items, isLoading, hasError, setCartItems, cartItems }: GenericProps) {
   let filteredItems;
 
   filteredItems = items.filter((item: { name: string }) =>
@@ -18,7 +20,7 @@ export default function ItemList({ searchText, items, isLoading, hasError, setCa
       )}
       {!hasError && !isLoading && (
         <div className="list-container">
-          {filteredItems.map((item: any) => {
+          {filteredItems.map((item: GenericItem) => {
             return <Item {...item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} />;
           })}
         </div>

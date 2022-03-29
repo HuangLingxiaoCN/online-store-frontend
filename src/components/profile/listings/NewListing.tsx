@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+import { GenericProps } from "../../../Types";
 import NewListingModal from "../../UI/newListingModal/NewListingModal";
 import "../../../sass/NewListing.scss";
 
-export default function NewListing({ setListings }: any) {
+export default function NewListing({ setListings }: GenericProps) {
   const jwt = Cookies.get("jwt")!;
   const [modalOpen, setModalOpen] = useState(false);
   const [email, setEmail] = useState("");

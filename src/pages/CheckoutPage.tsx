@@ -2,6 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { GenericItem } from "../Types";
 import "../sass/CheckoutPage.scss";
 
 export default function CheckoutPage() {
@@ -32,7 +33,7 @@ export default function CheckoutPage() {
             <th>Quantity</th>
             <th>Total</th>
           </tr>
-          {cartItems.map((item: any) => (
+          {cartItems.map((item: GenericItem) => (
             <tr>
               <td>{item.productName}</td>
               <td>{(item.price / item.quantity).toFixed(2)}</td>
@@ -45,7 +46,7 @@ export default function CheckoutPage() {
           <p>
             Total:{" €"}
             {cartItems
-              .map((item: any) => item.price)
+              .map((item: GenericItem) => item.price)
               .reduce(
                 (accumulator: number, current: number) =>
                   (accumulator += current)

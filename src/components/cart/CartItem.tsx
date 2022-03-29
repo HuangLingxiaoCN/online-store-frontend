@@ -1,14 +1,17 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import { GenericProps } from "../../Types";
+import { GenericItem } from "../../Types";
 import "../../sass/CartItem.scss";
 
-export default function CartItem(props: any) {
-  const jwt: any = Cookies.get("jwt");
-  // let quantity: number = props.item.quantity;
+export default function CartItem(props: GenericProps) {
+
+  const jwt: string = Cookies.get("jwt")!;
+
   const { imageUrl, productName, price, quantity, _id } = props.item;
   const singlePrice = price / quantity;
   const cartItems = props.cartItems;
@@ -37,7 +40,7 @@ export default function CartItem(props: any) {
 
   const changeQuantityHandler = (event: any) => {
     // TODO: Enable user to change the cart item quantity
-    const newCartItems = cartItems.map((item: any) => {
+    const newCartItems = cartItems.map((item: GenericItem) => {
       // check if the item id is the right one user is finding
       if (item._id === _id) {
         axios({

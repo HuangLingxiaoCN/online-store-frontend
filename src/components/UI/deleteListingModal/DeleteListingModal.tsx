@@ -1,6 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+import { GenericProps } from "../../../Types";
+import { GenericItem } from "../../../Types";
 import "../../../sass/DeleteListingModal.scss";
 
 export default function DeleteListingModal({
@@ -8,7 +10,7 @@ export default function DeleteListingModal({
   listing,
   setListings,
   userEmail,
-}: any) {
+}: GenericProps) {
   const { _id } = listing;
   const jwt = Cookies.get("jwt")!;
 
@@ -29,7 +31,7 @@ export default function DeleteListingModal({
       .then((res) => {
         setDeleteModalOpen(false);
         setListings((state: any) => {
-          const newState = state.filter((l: any) => l._id !== _id);
+          const newState = state.filter((l: GenericItem) => l._id !== _id);
           return newState;
         });
       })

@@ -5,3 +5,8 @@ export type RootState = {
   isLoggedIn: Boolean,
   email: String,
 }
+
+export type ActionType = {
+  type: string,
+  payload: string
+}

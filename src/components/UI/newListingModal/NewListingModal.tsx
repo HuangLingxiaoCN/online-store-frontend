@@ -2,13 +2,14 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useState, useRef } from "react";
 
+import { GenericProps } from "../../../Types";
 import "../../../sass/NewListingModal.scss";
 
 export default function NewListingModal({
   setModalOpen,
   email,
   setListings,
-}: any) {
+}: GenericProps) {
   const jwt = Cookies.get("jwt")!;
   const [imageSelected, setImageSelected] = useState<File | string>("");
   const nameRef = useRef(document.createElement("input"));

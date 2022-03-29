@@ -6,15 +6,15 @@ import axios from "axios";
 import Header from "../components/home/header/Header";
 import { Footer } from "../components/UI/footer/Footer";
 import ItemList from "../components/home/body/ItemList";
-import { RootState } from "../redux/Types";
+import { RootState } from "../redux/ReduxTypes";
 import { userLogin } from "../redux/Actions";
 
 import '../sass/Home.scss'
 
 export default function Home() {
-  const [items, setItems] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState<any>(true);
-  const [hasError, setHasError] = useState<any>(false);
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const [searchText, setSearchText] = useState<String>("");
   const [cartItems, setCartItems] = useState([]);

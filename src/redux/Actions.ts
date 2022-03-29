@@ -1,6 +1,6 @@
-import { LOGIN, LOGOUT } from "./Types";
+import { LOGIN, LOGOUT } from "./ReduxTypes";
 
-export const userLogin = (email: any) => {
+export const userLogin = (email: string) => {
   return {
     type: LOGIN,
     payload: email,

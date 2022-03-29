@@ -4,9 +4,11 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 import "../../../sass/Item.scss";
-import { RootState } from "../../../redux/Types";
+import { GenericProps } from "../../../Types";
+import { GenericItem } from "../../../Types";
+import { RootState } from "../../../redux/ReduxTypes";
 
-export default function Item(props: any) {
+export default function Item(props: GenericProps) {
   // _id is needed to get productId
   const { imageUrl, name, genre, numberInStock, price, description, _id } = props;
   const productId = _id;
@@ -47,7 +49,7 @@ export default function Item(props: any) {
           .then(res => {
             // if props.cartItems alright has the item with same productId
             // then don't update UI
-            let itemInCart = props.cartItems.find((i:any) => i.productId === res.data.productId);
+            let itemInCart = props.cartItems.find((i:GenericItem) => i.productId === res.data.productId);
 
             if(!itemInCart) {
               props.setCartItems([...props.cartItems, res.data]);

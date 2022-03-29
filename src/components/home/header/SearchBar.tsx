@@ -1,17 +1,18 @@
 import { useState } from "react";
 
+import { GenericProps } from "../../../Types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/SearchBar.scss";
 
-export default function SearchBar({setSearchText}: any) {
+export default function SearchBar({setSearchText}: GenericProps) {
   const [input, setInput] = useState<any>('')
 
   const handleInputChange = (event: any) => {
     setInput(event.target.value)
   }
 
-  const handlerSearchClick = (e: any) => {
+  const handlerSearchClick = () => {
     setSearchText(input)
   }
 

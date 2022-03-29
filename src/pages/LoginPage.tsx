@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import { RootState } from "../redux/Types";
+import { RootState } from "../redux/ReduxTypes";
 import { userLogin } from "../redux/Actions";
 import "../sass/Form.scss";
 

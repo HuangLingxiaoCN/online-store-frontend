@@ -9,14 +9,15 @@ import Logout from "./Logout";
 import Profile from "./Profile";
 import Register from "./Register";
 import Cart from "./Cart";
-import { RootState } from "../../../../redux/Types";
+import { GenericProps } from "../../../../Types";
+import { RootState } from "../../../../redux/ReduxTypes";
 
 import "../../../../sass/NavBar.scss";
 
 export default function NavBar({
   cartItemsQuantity,
   setCartItemsQuantity,
-}: any) {
+}: GenericProps) {
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const userEmail = useSelector((state: RootState) => state.email);
   const [userName, setUserName] = useState("");

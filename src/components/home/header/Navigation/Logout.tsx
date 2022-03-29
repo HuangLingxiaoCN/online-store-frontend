@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
+import { GenericProps } from "../../../../Types";
 import { userLogout } from "../../../../redux/Actions";
 import LinkButton from "../../../UI/linkButton/LinkButton";
 
-export default function Logout({setJwt}: any) {
+export default function Logout({setJwt}: GenericProps) {
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
