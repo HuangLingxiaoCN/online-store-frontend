@@ -10,13 +10,16 @@ export default function NewListingModal({
   email,
   setListings,
 }: GenericProps) {
+
+  const [genre, setGenre] = useState("");
+
   const jwt = Cookies.get("jwt")!;
   const [imageSelected, setImageSelected] = useState<File | string>("");
   const nameRef = useRef(document.createElement("input"));
   const priceRef = useRef(document.createElement("input"));
   const descriptionRef = useRef(document.createElement("textarea"));
   const numberRef = useRef(document.createElement("input"));
-  const genreRef = useRef(document.createElement("input"));
+  // const genreRef = useRef(document.createElement("input"));
 
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ export default function NewListingModal({
     const price = priceRef.current.value;
     const description = descriptionRef.current.value;
     const number = numberRef.current.value;
-    const genre = genreRef.current.value;
+    // const genre = genreRef.current.value;
 
     const formData = new FormData();
     formData.append("file", imageSelected);
@@ -154,12 +157,23 @@ export default function NewListingModal({
                   <label htmlFor="genre">Genre</label>
                 </td>
                 <td>
-                  <input
+                  {/* <input
                     type="text"
                     id="genre"
                     placeholder="Genre"
                     ref={genreRef}
-                  />
+                  /> */}
+                  <select onChange={(e) => {
+                    setGenre(e.target.value);
+                  }} id="genre">
+                    <option value="women's clothing">women's clothing</option>
+                    <option value="jewelery">jewelery</option>
+                    <option value="men's clothing">men's clothing</option>
+                    <option value="computer">computer</option>
+                    <option value="eletronics">eletronics</option>
+                    <option value="car">car</option>
+                    <option value="other">other</option>
+                  </select>
                 </td>
               </tr>
             </tbody>
