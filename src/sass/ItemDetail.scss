@@ -63,6 +63,18 @@
   }
 }
 
+.add-to-cart-btn-detail:disabled,
+.add-to-cart-btn-detail[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+
+  &:hover {
+    filter: none;
+    cursor: default;
+  }
+}
+
 .back-to-home-btn {
   padding: 5px 10px;
 }

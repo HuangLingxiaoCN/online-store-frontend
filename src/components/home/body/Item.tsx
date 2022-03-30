@@ -10,16 +10,39 @@ import { RootState } from "../../../redux/ReduxTypes";
 
 export default function Item(props: GenericProps) {
   // _id is needed to get productId
-  const { imageUrl, name, genre, numberInStock, price, description, _id } = props;
+
+  const {
+    imageUrl,
+    name,
+    genre,
+    numberInStock,
+    price,
+    description,
+    _id,
+    ownerEmail,
+  } = props;
   const productId = _id;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const email = useSelector((state: RootState) => state.email);
   const navigate = useNavigate();
 
+  // check if the user logged in is also the seller
+  const isSeller = ownerEmail === email ? true : false;
+
   const itemDetailHandler = () => {
     // passing props to detail page
     navigate("/detail", {
-      state: { imageUrl, name, genre, numberInStock, price, description, productId, email },
+      state: {
+        imageUrl,
+        name,
+        genre,
+        numberInStock,
+        price,
+        description,
+        productId,
+        email,
+        ownerEmail,
+      },
     });
   };
 
@@ -29,7 +52,7 @@ export default function Item(props: GenericProps) {
     } else {
       const data = {
         email: email,
-        productId
+        productId,
       };
 
       const jwt = Cookies.get("jwt");
@@ -46,18 +69,18 @@ export default function Item(props: GenericProps) {
 
         axios
           .patch(url, data, config)
-          .then(res => {
+          .then((res) => {
             // if props.cartItems alright has the item with same productId
             // then don't update UI
-            let itemInCart = props.cartItems.find((i:GenericItem) => i.productId === res.data.productId);
+            let itemInCart = props.cartItems.find(
+              (i: GenericItem) => i.productId === res.data.productId
+            );
 
-            if(!itemInCart) {
+            if (!itemInCart) {
               props.setCartItems([...props.cartItems, res.data]);
             }
-
           })
           .catch((error) => console.log(error));
-
       } else {
         throw new Error("JWT is not defined in cookies");
       }
@@ -78,7 +101,11 @@ export default function Item(props: GenericProps) {
       <p className="item-genre">{genre}</p>
       <div className="add-to-cart">
         <h2>€{price}</h2>
-        <button className="add-to-cart-btn" onClick={addToCartHandler}>
+        <button
+          className="add-to-cart-btn"
+          onClick={addToCartHandler}
+          disabled={isSeller}
+        >
           Add To Cart
         </button>
       </div>

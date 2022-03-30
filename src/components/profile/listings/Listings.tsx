@@ -18,7 +18,7 @@ export default function Listings({ listings, userEmail, setListings }: GenericPr
           />
         );
       })}
-      <NewListing setListings={setListings} />
+      <NewListing setListings={setListings} userEmail={userEmail} />
     </div>
   );
 }

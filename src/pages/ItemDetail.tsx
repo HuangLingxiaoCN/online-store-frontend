@@ -13,18 +13,20 @@ import "../sass/ItemDetail.scss";
 
 export default function ItemDetail() {
   const { state }: any = useLocation();
-  const { imageUrl, name, genre, numberInStock, price, description } = state;
+  console.log(state);
+  const { imageUrl, name, genre, numberInStock, price, description, email, productId, ownerEmail } = state;
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const navigate = useNavigate();
+
+  // check if the user logged in is also the seller
+  const isSeller = ownerEmail === email ? true : false;
 
   const addToCartHandler = () => {
     if (!isLoggedIn) {
       alert("Please fist log in");
     } else {
-      console.log(state);
-      const { email, productId } = state;
       const data = {
-        email: email,
+        email,
         productId,
       };
       const jwt = Cookies.get("jwt");
@@ -70,10 +72,12 @@ export default function ItemDetail() {
             <h2 className="price">€{price}</h2>
             <p className="genre">Genre: {genre}</p>
             <p className="numberInStock">Number In Stock: {numberInStock}</p>
+            <p className="ownerEmail">Seller: {ownerEmail}</p>
             <p className="description">{description}</p>
             <button
               className="add-to-cart-btn-detail"
               onClick={addToCartHandler}
+              disabled={isSeller}
             >
               Add To Cart
             </button>

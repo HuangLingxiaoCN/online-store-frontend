@@ -7,9 +7,11 @@ import "../../../sass/NewListingModal.scss";
 
 export default function NewListingModal({
   setModalOpen,
-  email,
+  userEmail,
   setListings,
 }: GenericProps) {
+
+  
 
   const [genre, setGenre] = useState("");
 
@@ -19,7 +21,6 @@ export default function NewListingModal({
   const priceRef = useRef(document.createElement("input"));
   const descriptionRef = useRef(document.createElement("textarea"));
   const numberRef = useRef(document.createElement("input"));
-  // const genreRef = useRef(document.createElement("input"));
 
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -27,7 +28,6 @@ export default function NewListingModal({
     const price = priceRef.current.value;
     const description = descriptionRef.current.value;
     const number = numberRef.current.value;
-    // const genre = genreRef.current.value;
 
     const formData = new FormData();
     formData.append("file", imageSelected);
@@ -41,7 +41,7 @@ export default function NewListingModal({
         setImageSelected("");
         // get the image url back
         const imageUrl = res.data.secure_url;
-
+        console.log(userEmail)
         // PATCH the new listing to the server
         axios({
           url: "https://fierce-spring-store-backend.herokuapp.com/api/user/listing/add",
@@ -59,11 +59,13 @@ export default function NewListingModal({
               description,
               numberInStock: number,
               genre,
+              ownerEmail: userEmail
             },
-            email,
+            // email: email,
           },
         })
           .then((res) => {
+            console.log(res);
             // ---- updating the UI ------------------
             setModalOpen(false);
             // State updating based on current state
@@ -72,7 +74,7 @@ export default function NewListingModal({
             });
             // navigate("/profile", { replace: true });
           })
-          .catch((error: Error) => console.log("error from my server", error));
+          .catch((error: Error) => console.log("error from server", error));
       })
       .catch((err: Error) => console.log("error from cloudinary", err));
   };

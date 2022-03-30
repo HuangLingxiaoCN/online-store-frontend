@@ -6,6 +6,7 @@ import "../../../sass/ItemList.scss";
 export default function ItemList({ searchText, items, isLoading, hasError, setCartItems, cartItems }: GenericProps) {
   let filteredItems;
 
+
   filteredItems = items.filter((item: { name: string }) =>
     item.name.toLowerCase().includes(searchText.toLowerCase())
   );

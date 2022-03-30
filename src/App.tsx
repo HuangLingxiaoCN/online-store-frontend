@@ -23,6 +23,10 @@ import './sass/App.scss';
         8. Delete Listing functionality with a popup warning window and update the UI (\/)
         9. Display item quantity in ItemDetail page (\/)
         10. Finally remove all console.log and fixing all bugs (\/)
+        11. Display owners' emails on itemdetail page and disable add to cart button if the item's owner is logged in(you cannot sell items to yourself) (\/)
+        12. Add registration email verification ()
+        13. After Checkout, create a billing information page to collect users' billing info. And Store orders in database ()
+        14. Create an admin account page to manage all products and users ()
 */
 
 // App.tsx component contains all the React Routes in the application
