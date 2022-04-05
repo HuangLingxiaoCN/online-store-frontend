@@ -2,6 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
+import CountryDropdown from "../components/UI/countryDropdown/CountryDropdownList";
 import { GenericItem } from "../Types";
 import "../sass/CheckoutPage.scss";
 
@@ -24,7 +25,7 @@ export default function CheckoutPage() {
         />
         Back to Home page
       </button>
-      <div className="checkout-container">
+      <div className="orderDetail-container">
         <h1>Your Order Detail:</h1>
         <table>
           <tr>
@@ -42,18 +43,55 @@ export default function CheckoutPage() {
             </tr>
           ))}
         </table>
-        <div className="checkout-totalPrice">
-          <p>
-            Total:{" €"}
-            {cartItems
-              .map((item: GenericItem) => item.price)
-              .reduce(
-                (accumulator: number, current: number) =>
-                  (accumulator += current)
-              )
-              .toFixed(2)}
-          </p>
+      </div>
+
+      <br></br><br></br><br></br>
+      <h2 className="billingInfo-promptText">Enter your billing information: </h2>
+      <br></br><br></br>
+
+      <form className="billingInfo-form">
+        <div className="billingInfo-group">
+          <div>
+            <p>Full Name</p>
+            <input type="text" />
+          </div>
+          <div>
+            <p>Country</p>
+            <CountryDropdown />
+          </div>
+          <div>
+            <p>Street Address</p>
+            <input type="text" />
+          </div>
         </div>
+        <div className="billingInfo-group">
+          <div>
+            <p>Phone number</p>
+            <input type="text" />
+          </div>
+          <div>
+            <p>Postal Code</p>
+            <input type="text" />
+          </div>
+          <div>
+            <p>City</p>
+            <input type="text" />
+          </div>
+        </div>
+      </form>
+      <div className="checkout-totalPrice">
+        <p style={{ marginRight: "10vw" }}>
+          Total Price:{" €"}
+          {cartItems
+            .map((item: GenericItem) => item.price)
+            .reduce(
+              (accumulator: number, current: number) => (accumulator += current)
+            )
+            .toFixed(2)}
+        </p>
+      </div>
+      <div className="checkout-payingbtnContainer">
+        <button className="checkout-payingbtn" type="button">Pay</button>
       </div>
     </div>
   );

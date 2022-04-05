@@ -1,4 +1,4 @@
-.checkout-container {
+.orderDetail-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,6 +18,40 @@ th, td {
   padding: 20px;
 }
 
+.billingInfo-promptText {
+  margin-left: 15%;
+}
+
+.billingInfo-form {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 15%;
+  width: 70%;
+}
+
+.billingInfo-group {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+
+  p {
+    padding: 5px;
+  }
+
+  input {
+    width: 60%;
+  }
+
+  input, select {
+    padding: 5px;
+  }
+}
+
+.billingInfo-groupItem {
+  position: relative;
+}
+
 .checkout-totalPrice {
   width: 100%;
   text-align: right;
@@ -26,4 +60,29 @@ th, td {
   font-weight: bold;
   margin-top: 50px;
   margin-right: 35vw;
+}
+
+.checkout-payingbtnContainer {
+  text-align: right;
+  margin-right: 10%;
+  margin-top: 20px;
+}
+
+.checkout-payingbtn {
+  background-color: #d12f07;
+  padding: 15px 25px;
+  color: rgb(228, 231, 218);
+  font: {
+    size: 20px;
+    family: "Helvetica Neue", Helvetica, Arial;
+    weight: bold;
+  }
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 2px 5px 2px rgb(0 0 0 / 20%);
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+  }
 }

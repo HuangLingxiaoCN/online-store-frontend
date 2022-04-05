@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
 import CartList from "../components/cart/CartList";
 import { Footer } from "../components/UI/footer/Footer";
-import { RootState } from "../redux/ReduxTypes";
 import { GenericItem } from "../Types";
 import "../sass/ShoppingCart.scss";
 
@@ -17,7 +15,6 @@ export default function CartPage() {
   // For updating UI
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotal] = useState(0);
-  const userEmail = useSelector((state: RootState) => state.email);
   const navigate = useNavigate();
 
   // Get user cart
@@ -50,14 +47,14 @@ export default function CartPage() {
   }, [cartItems]);
 
   const checkoutHandler = () => {
-    axios
-      .patch(
-        "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/clear",
-        {
-          email: userEmail,
-        }
-      )
-      .catch((err) => console.error(err));
+    // axios
+    //   .patch(
+    //     "https://fierce-spring-store-backend.herokuapp.com/api/user/cart/clear",
+    //     {
+    //       email: userEmail,
+    //     }
+    //   )
+    //   .catch((err) => console.error(err));
     navigate("/order", { state: cartItems });
   };
 
