@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 import { userLogin } from "../redux/Actions";
-import "../sass/Form.scss";
+import "../sass/SignInForm.scss";
 
 // After registeration, the header UI is not rendered correctly
 
@@ -78,7 +78,7 @@ export default function RegisterPage() {
   return (
     <div className="form-container">
       <h1>Register Page</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="signInForm">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" ref={nameRef} className="form-input" />
         <label htmlFor="email">Email</label>

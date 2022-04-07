@@ -33,6 +33,7 @@ th, td {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  min-width: 60rem;
   padding: 10px;
 
   p {
@@ -50,6 +51,11 @@ th, td {
 
 .billingInfo-groupItem {
   position: relative;
+}
+
+.payment-options {
+  width: 100%;
+  margin: 10px 0;
 }
 
 .checkout-totalPrice {

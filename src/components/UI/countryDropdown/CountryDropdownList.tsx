@@ -1,6 +1,9 @@
-export default function CountryDropdown() {
+import React from 'react';
+import { GenericProps } from '../../../Types'
+
+const CountryDropdown = React.forwardRef((props: GenericProps, ref: GenericProps) => {
   return (
-    <select name="country">
+    <select name="country" ref={ref}>
       <option value="Afganistan">Afghanistan</option>
       <option value="Albania">Albania</option>
       <option value="Algeria">Algeria</option>
@@ -249,4 +252,6 @@ export default function CountryDropdown() {
       <option value="Zimbabwe">Zimbabwe</option>
     </select>
   );
-}
+})
+
+export default CountryDropdown;

@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 import { RootState } from "../redux/ReduxTypes";
 import { userLogin } from "../redux/Actions";
-import "../sass/Form.scss";
+import "../sass/SignInForm.scss";
 
 export default function LoginPage() {
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
@@ -57,7 +57,7 @@ export default function LoginPage() {
   return (
     <div className="form-container">
       <h1>Login</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="signInForm">
         <label htmlFor="email">Email</label>
         <input type="email" id="email" ref={emailRef} className="form-input" />
         <label htmlFor="password">Password</label>
