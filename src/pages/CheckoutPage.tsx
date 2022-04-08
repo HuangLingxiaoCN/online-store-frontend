@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,14 @@ export default function CheckoutPage() {
   const { state }: any = useLocation();
   const navigate = useNavigate();
   const cartItems = state;
+
+  const [userEmail, setUserEmail] = useState("");
+  const jwt = Cookies.get("jwt")!;
+
+  const totalPrice = cartItems
+    .map((item: GenericItem) => item.price)
+    .reduce((accumulator: number, current: number) => (accumulator += current))
+    .toFixed(2);
 
   const fullNameRef = useRef<HTMLInputElement>(document.createElement("input"));
   const countryRef = useRef<HTMLInputElement>(document.createElement("input"));
@@ -27,20 +36,51 @@ export default function CheckoutPage() {
   const cityRef = useRef<HTMLInputElement>(document.createElement("input"));
   const [paymentMethod, setPaymentMethod] = useState("");
 
-  console.log(cartItems);
+  useEffect(() => {
+    axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
+      headers: { "x-auth-token": jwt },
+    })
+      .then((res) => {
+        setUserEmail(res.data.email);
+      })
+      .catch((err) => console.log(err.message));
+  }, [jwt]);
 
   const createOrderHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(fullNameRef.current.value);
-    console.log(countryRef.current.value);
-    console.log(streetAddressRef.current.value);
-    console.log(phoneNumberRef.current.value);
-    console.log(postalCodeRef.current.value);
-    console.log(cityRef.current.value);
-    console.log(paymentMethod);
 
     // send the data to the server
+    const data = {
+      totalPrice: totalPrice,
+      timestamp: new Date().toLocaleDateString(),
+      customerEmail: userEmail,
+      purchasedItems: cartItems.map((item: any) => {
+        const { _id, ...newItem } = item;
+        return newItem;
+      }),
+      billingInfo: {
+        fullName: fullNameRef.current.value,
+        country: countryRef.current.value,
+        streetAddress: streetAddressRef.current.value,
+        phoneNumber: phoneNumberRef.current.value,
+        postalCode: postalCodeRef.current.value,
+        city: cityRef.current.value,
+        paymentMethod: paymentMethod,
+      },
+    };
 
+    axios
+      .post(
+        "https://fierce-spring-store-backend.herokuapp.com/api/orders/createOrder",
+        data
+      )
+      .then((response: any) => {
+        console.log(response);
+      })
+      .catch((err: Error) => console.log(err.message));
+
+    // After checking out successfully, go to checkOutSuccess page
+    navigate("/checkOutSuccess", { replace: true });
   };
 
   return (
@@ -174,13 +214,7 @@ export default function CheckoutPage() {
         <div className="checkout-totalPrice">
           <p style={{ marginRight: "10vw" }}>
             Total Price:{" €"}
-            {cartItems
-              .map((item: GenericItem) => item.price)
-              .reduce(
-                (accumulator: number, current: number) =>
-                  (accumulator += current)
-              )
-              .toFixed(2)}
+            {totalPrice}
           </p>
         </div>
         <div className="checkout-payingbtnContainer">

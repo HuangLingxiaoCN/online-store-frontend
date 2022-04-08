@@ -1,7 +1,7 @@
 import React from 'react';
 import { GenericProps } from '../../../Types'
 
-const CountryDropdown = React.forwardRef((props: GenericProps, ref: GenericProps) => {
+const CountryDropdown = React.forwardRef((_: GenericProps, ref: GenericProps) => {
   return (
     <select name="country" ref={ref}>
       <option value="Afganistan">Afghanistan</option>

@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import ItemDetail from './pages/ItemDetail';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
+import CheckOutSuccess from './pages/CheckOutSuccess';
 import './sass/App.scss';
 
 /*
@@ -42,6 +43,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/order" element={<CheckoutPage />} />
+        <Route path="/checkOutSuccess" element={<CheckOutSuccess />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,23 @@
+.checkOutSuccess-container {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.goBackBtn-afterCheckOut-container {
+  margin-top: 2.5rem;
+}
+
+.goBackBtn-afterCheckOut {
+  background-color: #82dc3e;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+  }
+}
