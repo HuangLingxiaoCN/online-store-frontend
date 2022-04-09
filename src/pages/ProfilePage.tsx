@@ -15,6 +15,7 @@ export default function ProfilePage() {
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [listings, setListings] = useState([]);
+  const [orders, setOrders] = useState([]);
   const jwt = Cookies.get("jwt")!;
 
   useEffect(() => {
@@ -28,6 +29,19 @@ export default function ProfilePage() {
         setListings(res.data.listings);
       });
   }, [jwt]);
+
+  useEffect(() => {
+    if (userEmail !== "") {
+      axios(
+        `https://fierce-spring-store-backend.herokuapp.com/api/orders/getOrders/${userEmail}`
+      )
+        .then((res: any) => {
+          console.log(res);
+          setOrders(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [userEmail]);
 
   return (
     <div>
@@ -58,6 +72,8 @@ export default function ProfilePage() {
           userEmail={userEmail}
           setListings={setListings}
         />
+
+        {/* Order History Section */}
       </div>
       <Footer />
     </div>
