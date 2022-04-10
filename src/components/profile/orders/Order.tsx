@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { GenericProps } from "../../../Types";
 
@@ -10,7 +11,9 @@ export default function Order({ order, userEmail, setOrders }: GenericProps) {
 
   return (
     <div className="orderItem">
-      <p>#{order._id}</p>
+      <Link to="/orderDetail" state={{ userEmail, order }}>
+        <p>#{order._id}</p>
+      </Link>
       <p>{order.timestamp}</p>
       <p>€{order.totalPrice}</p>
       <button onClick={() => setDeleteModalOpen(true)}>Delete</button>

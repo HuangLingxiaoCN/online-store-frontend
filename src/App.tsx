@@ -8,6 +8,7 @@ import ItemDetail from './pages/ItemDetail';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import CheckOutSuccess from './pages/CheckOutSuccess';
+import OrderDetail from './pages/OrderDetail';
 import './sass/App.scss';
 
 /*
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/orderDetail" element={<OrderDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/detail" element={<ItemDetail />} />
         <Route path="/login" element={<LoginPage />} />

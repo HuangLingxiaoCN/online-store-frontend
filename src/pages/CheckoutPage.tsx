@@ -97,8 +97,8 @@ export default function CheckoutPage() {
         />
         Back to Home page
       </button>
-      <div className="orderDetail-container">
-        <h1>Your Order Detail:</h1>
+      <div className="checkout-container">
+        <h1>Your Cart Overview:</h1>
         <table>
           <thead>
             <tr>
