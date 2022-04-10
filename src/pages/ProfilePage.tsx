@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Footer } from "../components/UI/footer/Footer";
 import profile from "../assets/profile.jpg";
 import Listings from "../components/profile/listings/Listings";
+import OrderList from "../components/profile/orders/OrderList";
 import "../sass/Profile.scss";
 
 export default function ProfilePage() {
@@ -36,7 +37,6 @@ export default function ProfilePage() {
         `https://fierce-spring-store-backend.herokuapp.com/api/orders/getOrders/${userEmail}`
       )
         .then((res: any) => {
-          console.log(res);
           setOrders(res.data);
         })
         .catch((err) => console.log(err));
@@ -74,6 +74,12 @@ export default function ProfilePage() {
         />
 
         {/* Order History Section */}
+        <h2>Order History: </h2>
+        <OrderList
+          orders={orders}
+          userEmail={userEmail}
+          setOrders={setOrders}
+        />
       </div>
       <Footer />
     </div>

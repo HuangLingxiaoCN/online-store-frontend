@@ -1,0 +1,14 @@
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  button {
+    cursor: pointer;
+    margin-right: 40px;
+  }
+}

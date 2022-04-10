@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 import { GenericProps } from "../../../Types";
 import { GenericItem } from "../../../Types";
-import "../../../sass/DeleteListingModal.scss";
+import "../../../sass/DeleteModal.scss";
 
 export default function DeleteListingModal({
   setDeleteModalOpen,
@@ -30,6 +30,7 @@ export default function DeleteListingModal({
     })
       .then((res) => {
         setDeleteModalOpen(false);
+        // Here I update the listings state based on the previous state and return a new state
         setListings((state: any) => {
           const newState = state.filter((l: GenericItem) => l._id !== _id);
           return newState;
@@ -39,20 +40,20 @@ export default function DeleteListingModal({
   };
 
   return (
-    <div className="deleteListingModal-background">
-      <div className="deleteListingModal-container">
-        <p className="deleteListingModal-warningMsg">
+    <div className="deleteModal-background">
+      <div className="deleteModal-container">
+        <p className="deleteModal-warningMsg">
           Are you sure to delete this listing ?
         </p>
-        <div className="deleteListingModal-btnContainer">
+        <div className="deleteModal-btnContainer">
           <button
             onClick={() => setDeleteModalOpen(false)}
-            className="deleteListingModal-btn cancelBtn"
+            className="deleteModal-btn cancelBtn"
           >
             Cancel
           </button>
           <button
-            className="deleteListingModal-btn yesBtn"
+            className="deleteModal-btn yesBtn"
             onClick={deleteListingHandler}
           >
             Yes
