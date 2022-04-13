@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
+import Admin from "./Admin";
 import Login from "./Login";
 import Logout from "./Logout";
 import Profile from "./Profile";
@@ -49,6 +50,9 @@ export default function NavBar({
     </div>
   ) : (
     <div className="navbar-container">
+      <Link to="/admin">
+        <Admin />
+      </Link>
       <Link to="/login">
         <Login />
       </Link>
