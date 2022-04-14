@@ -50,7 +50,7 @@ export default function NavBar({
     </div>
   ) : (
     <div className="navbar-container">
-      <Link to="/admin">
+      <Link to="/adminLogin">
         <Admin />
       </Link>
       <Link to="/login">

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import ProfilePage from './pages/ProfilePage'
 import AdminPage from './pages/AdminPage';
+import AdminLoginPage from './pages/AdminLoginPage';
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage';
 import ItemDetail from './pages/ItemDetail';
@@ -29,8 +30,9 @@ import './sass/App.scss';
         11. Display owners' emails on itemdetail page and disable add to cart button if the item's owner is logged in(you cannot sell items to yourself) (\/)
         12. Add registration email verification ()
         13. After Checkout, create a billing information page to collect users' billing info. And Store orders in database (\/)
-        14. Show Order History in user Profile page and add delete order function()
+        14. Show Order History in user Profile page and add delete order function(\/)
         15. Create an admin account page to manage all products and users ()
+        16. Add email validation in backend to verify the email is valid. And password length verification. ()
 */
 
 // App.tsx component contains all the React Routes in the application
@@ -45,6 +47,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/detail" element={<ItemDetail />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/adminLogin" element={<AdminLoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/order" element={<CheckoutPage />} />

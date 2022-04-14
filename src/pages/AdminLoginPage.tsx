@@ -1,21 +1,16 @@
-import { FormEvent, useRef, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-import { RootState } from "../redux/ReduxTypes";
-import { userLogin } from "../redux/Actions";
 import "../sass/SignInForm.scss";
 
-export default function LoginPage() {
+export default function AdminLoginPage() {
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
-  const [errorMessage, setErrorMessage] = useState<String>('');
 
-  const loggedIn = useSelector((state: RootState) => state.isLoggedIn);
-  const dispatch = useDispatch();
+  const [isAdmin, setIsAdmin] = useState<Boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<String>('');
 
   const navigate = useNavigate();
 
@@ -26,7 +21,7 @@ export default function LoginPage() {
 
     // Authenticate user with email and password
     axios({
-      url: "https://fierce-spring-store-backend.herokuapp.com/api/auth",
+      url: "https://fierce-spring-store-backend.herokuapp.com/api/auth/isAdmin",
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -37,30 +32,26 @@ export default function LoginPage() {
         password: password,
       },
     }).then((res) => {
-      const jwt = res.data;
-      Cookies.set("jwt", jwt);
-      if (res.status === 200) {
-        // get the user information with jwt token
-        axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
-          headers: { "x-auth-token": jwt },
-        }).catch((err) => console.log(err));
-        dispatch(userLogin(email));
+      console.log(res);
+      if(res.status === 200) {
+        setIsAdmin(true);
+        navigate("/admin", { replace: true });
       }
     })
     .catch((err) => {
-      setErrorMessage('Login Failed. Please check your email or password');
-    });
-  };
+      if(err.response.data.statusCode === 401) {
+        setErrorMessage('Login Failed. Please check your email or password');
+      }
 
-  useEffect(() => {
-    if (loggedIn) {
-      navigate("/", { replace: true });
-    }
-  }, [navigate, loggedIn]);
+      if(err.response.data.statusCode === 403) {
+        setErrorMessage('Access denied. This account is not authorized to access the resource.');
+      }
+    })
+  };
 
   return (
     <div className="form-container">
-      <h1>Login</h1>
+      <h1>Admin Login</h1>
       <form onSubmit={submitHandler} className="signInForm">
         <label htmlFor="email">Email</label>
         <input type="email" id="email" ref={emailRef} className="form-input" />
@@ -72,7 +63,7 @@ export default function LoginPage() {
           className="form-input"
         />
         <p className="errorMessage">{errorMessage}</p>
-        <button type="submit" className="login-register-btn">Log in</button>
+        <button type="submit" className="login-register-btn">Log in as Admin</button>
         <Link to="/">
           <button type="button" className="backBtn">
             Go Back To Store
