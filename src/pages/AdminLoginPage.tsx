@@ -9,7 +9,6 @@ export default function AdminLoginPage() {
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
 
-  const [isAdmin, setIsAdmin] = useState<Boolean>(false);
   const [errorMessage, setErrorMessage] = useState<String>('');
 
   const navigate = useNavigate();
@@ -34,7 +33,6 @@ export default function AdminLoginPage() {
     }).then((res) => {
       console.log(res);
       if(res.status === 200) {
-        setIsAdmin(true);
         navigate("/admin", { replace: true });
       }
     })

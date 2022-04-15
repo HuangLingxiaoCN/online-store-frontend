@@ -1,0 +1,23 @@
+.admin-sidebar {
+  background: rgb(12, 12, 130);
+  list-style: none;
+  padding: 0 30px;
+  height: 100%;
+  margin-top: 0;
+  
+  h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 10px;
+  }
+
+  li {
+    color: rgb(218, 202, 202);
+    padding: 10px 0;
+    font-family: 'Times New Roman', Times, serif;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

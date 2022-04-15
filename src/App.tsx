@@ -2,7 +2,10 @@ import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import ProfilePage from './pages/ProfilePage'
-import AdminPage from './pages/AdminPage';
+import AdminHome from './pages/admin/AdminHome';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminProducts from './pages/admin/AdminProducts';
+import AdminOrders from './pages/admin/AdminOrders';
 import AdminLoginPage from './pages/AdminLoginPage';
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage';
@@ -46,7 +49,11 @@ function App() {
         <Route path="/orderDetail" element={<OrderDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/detail" element={<ItemDetail />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/home" element={<AdminHome />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/adminLogin" element={<AdminLoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
