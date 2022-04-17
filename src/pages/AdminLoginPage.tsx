@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import "../sass/SignInForm.scss";
 
@@ -32,6 +33,7 @@ export default function AdminLoginPage() {
       },
     }).then((res) => {
       console.log(res);
+      Cookies.set("jwt", res.data);
       if(res.status === 200) {
         navigate("/admin", { replace: true });
       }

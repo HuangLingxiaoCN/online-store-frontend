@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import "../../../sass/AdminNav.scss";
 
@@ -23,7 +24,10 @@ export default function AdminNav() {
       </Link>
       <button
         className="admin-logoutBtn"
-        onClick={() => navigate("/", { replace: true })}
+        onClick={() => {
+          Cookies.remove('jwt');
+          navigate("/", { replace: true });
+        }}
       >
         Log out
       </button>

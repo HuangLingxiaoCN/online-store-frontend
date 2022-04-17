@@ -48,7 +48,13 @@ export default function LoginPage() {
       }
     })
     .catch((err) => {
-      setErrorMessage('Login Failed. Please check your email or password');
+      if(err.response.data.statusCode === 401) {
+        setErrorMessage('Login Failed. Please check your email or password');
+      }
+
+      if(err.response.data.statusCode === 403) {
+        setErrorMessage('Account suspended. Please contact the administrator.');
+      }
     });
   };
 
