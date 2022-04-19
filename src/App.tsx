@@ -5,6 +5,7 @@ import ProfilePage from './pages/ProfilePage'
 import AdminHome from './pages/admin/AdminHome';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminProducts from './pages/admin/AdminProducts';
+import AdminProductDetail from './pages/admin/AdminProductDetail';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminLoginPage from './pages/AdminLoginPage';
 import LoginPage from './pages/LoginPage'
@@ -53,6 +54,7 @@ function App() {
         <Route path="/admin/home" element={<AdminHome />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/products/productDetail" element={<AdminProductDetail />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/adminLogin" element={<AdminLoginPage />} />
         <Route path="/login" element={<LoginPage />} />
