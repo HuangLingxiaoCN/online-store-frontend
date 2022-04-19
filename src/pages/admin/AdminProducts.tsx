@@ -48,7 +48,7 @@ export default function AdminProducts() {
         <ul>
           {products.map((product: any) => (
             <li key={product._id}>
-              <Link to="/admin/products/productDetail">{product.name}</Link>
+              <Link to="/admin/products/productDetail" state={product}>{product.name}</Link>
               <button onClick={() => deleteProductHandler(product._id)}>
                 Delete
               </button>
