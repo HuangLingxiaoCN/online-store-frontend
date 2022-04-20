@@ -7,14 +7,16 @@ import AdminUsers from './pages/admin/AdminUsers';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminProductDetail from './pages/admin/AdminProductDetail';
 import AdminOrders from './pages/admin/AdminOrders';
+import AdminOrderDetail from './pages/admin/AdminOrderDetail';
 import AdminLoginPage from './pages/AdminLoginPage';
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage';
 import ItemDetail from './pages/ItemDetail';
 import CartPage from './pages/CartPage';
+import OrderDetail from './pages/OrderDetail';
 import CheckoutPage from './pages/CheckoutPage';
 import CheckOutSuccess from './pages/CheckOutSuccess';
-import OrderDetail from './pages/OrderDetail';
+
 import './sass/App.scss';
 
 /*
@@ -56,6 +58,7 @@ function App() {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/productDetail" element={<AdminProductDetail />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/orders/OrderDetail" element={<AdminOrderDetail />} />
         <Route path="/adminLogin" element={<AdminLoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

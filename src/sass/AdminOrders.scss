@@ -1,0 +1,29 @@
+.adminOrders-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;;
+  }
+}
+
+.adminOrders-userList-container {
+  list-style: none;
+
+  li {
+    margin: 10px 0;
+  }
+}
+
+.adminOrders-userList-user {
+  font: {
+    size: 25px;
+    family: "Franklin Gothic Medium", "Arial Narrow", Arial;
+  }
+}
+
+.adminOrders-orderList-container {
+  list-style: square;
+}

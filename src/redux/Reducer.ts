@@ -3,12 +3,20 @@ import { ActionType } from "./ReduxTypes";
 import { LOGIN, LOGOUT } from "./ReduxTypes";
 
 const jwt: any = Cookies.get("jwt");
-
+let loggedIn = false;
 // When mounting in the application, if the jwt token exists,
 // we should get the user email using axios
 
+// If the admin login was emitted before, set isLoggedIn to be false
+if (jwt) {
+  if (jwt.length === 149) {
+    // Normal user logged in
+    loggedIn = true;
+  }
+}
+
 const initialState = {
-  isLoggedIn: jwt ? true : false,
+  isLoggedIn: loggedIn,
   email: ""
 };
 

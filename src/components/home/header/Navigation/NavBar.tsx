@@ -19,22 +19,27 @@ export default function NavBar({
   cartItemsQuantity,
   setCartItemsQuantity,
 }: GenericProps) {
-  const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
+  // let isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const userEmail = useSelector((state: RootState) => state.email);
   const [userName, setUserName] = useState("");
   const [listings, setListings] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(useSelector((state: RootState) => state.isLoggedIn));
   const [jwt, setJwt] = useState("");
 
   useEffect(() => {
-    const jwt = Cookies.get("jwt");
+    const jwt: any = Cookies.get("jwt");
     if (jwt) {
-      setJwt(jwt);
-      axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
-        headers: { "x-auth-token": jwt },
-      }).then((res) => {
-        setUserName(res.data.name);
-        setListings(res.data.listings);
-      });
+      if (jwt > 149) {
+        setIsLoggedIn(false);
+      } else {
+        setJwt(jwt);
+        axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
+          headers: { "x-auth-token": jwt },
+        }).then((res) => {
+          setUserName(res.data.name);
+          setListings(res.data.listings);
+        });
+      }
     }
   }, [jwt]);
 
@@ -46,7 +51,7 @@ export default function NavBar({
       <Link to="/profile" state={{ userEmail, userName, listings }}>
         <Profile />
       </Link>
-      <Logout setJwt={setJwt} />
+      <Logout setIsLoggedIn={setIsLoggedIn} />
     </div>
   ) : (
     <div className="navbar-container">

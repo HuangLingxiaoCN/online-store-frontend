@@ -43,7 +43,7 @@ export default function UserTable(props: GenericProps) {
 
   return (
     <div className="userTable-container">
-      <h1>User Console</h1>
+      <h1>Users Management Console</h1>
       <table>
         <thead>
           <tr>

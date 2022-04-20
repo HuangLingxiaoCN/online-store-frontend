@@ -32,7 +32,6 @@ export default function AdminLoginPage() {
         password: password,
       },
     }).then((res) => {
-      console.log(res);
       Cookies.set("jwt", res.data);
       if(res.status === 200) {
         navigate("/admin", { replace: true });

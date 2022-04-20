@@ -9,7 +9,7 @@ import ItemList from "../components/home/body/ItemList";
 import { RootState } from "../redux/ReduxTypes";
 import { userLogin } from "../redux/Actions";
 
-import '../sass/Home.scss'
+import "../sass/Home.scss";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -23,6 +23,7 @@ export default function Home() {
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
   const dispatch = useDispatch();
 
+  // Get products from backend
   // Warning(solved): Can't perform a React state update on an unmounted component.
   useEffect(() => {
     axios("https://fierce-spring-store-backend.herokuapp.com/api/products")
@@ -49,18 +50,23 @@ export default function Home() {
     // If user is logged in and jwt is stored in cookie, get the cart items
     // and set email to be the user email in redux
     const jwt = Cookies.get("jwt");
-    if (jwt) {
-      axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
-        headers: { "x-auth-token": jwt },
-      })
-        .then((res) => {
-          setCartItems(res.data.cart);
-          setCartItemsQuantity(cartItems.length);
-          dispatch(userLogin(res.data.email));
-        })
-        .catch((err) => console.log(err));
-    }
 
+    if (jwt) {
+      // If admin login has been emitted, remove the jwt token
+      if (jwt.length > 149) {
+        Cookies.remove("jwt");
+      } else {
+        axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
+          headers: { "x-auth-token": jwt },
+        })
+          .then((res) => {
+            setCartItems(res.data.cart);
+            setCartItemsQuantity(cartItems.length);
+            dispatch(userLogin(res.data.email));
+          })
+          .catch((err) => console.log(err));
+      }
+    }
   }, [isLoggedIn, cartItems.length, dispatch]);
 
   return (

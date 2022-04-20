@@ -5,13 +5,13 @@ import { GenericProps } from "../../../../Types";
 import { userLogout } from "../../../../redux/Actions";
 import LinkButton from "../../../UI/linkButton/LinkButton";
 
-export default function Logout({setJwt}: GenericProps) {
+export default function Logout({setIsLoggedIn}: GenericProps) {
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
     Cookies.remove("jwt");
     dispatch(userLogout)
-    setJwt('');
+    setIsLoggedIn(false);
   }
 
   return (
