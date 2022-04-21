@@ -1,9 +1,10 @@
-import { FormEvent, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { FormEvent, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+import { RootState } from "../redux/ReduxTypes";
 import { userLogin } from "../redux/Actions";
 import "../sass/SignInForm.scss";
 
@@ -16,6 +17,8 @@ export default function RegisterPage() {
   const nameRef = useRef<HTMLInputElement>(document.createElement("input"));
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
+
+  const loggedIn = useSelector((state: RootState) => state.isLoggedIn);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -66,14 +69,18 @@ export default function RegisterPage() {
             }
           })
           .catch((err) => console.log(err));
-
-        // After regisration, redirect to Home page. Should also rerender header UI
-        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  // After regisration, redirect to Home page. Should also rerender header UI
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate, loggedIn]);
 
   return (
     <div className="form-container">
