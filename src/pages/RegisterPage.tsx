@@ -1,24 +1,17 @@
-import { FormEvent, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
+import { FormEvent, useRef } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import { RootState } from "../redux/ReduxTypes";
-import { userLogin } from "../redux/Actions";
 import "../sass/SignInForm.scss";
 
 // After registeration, the header UI is not rendered correctly
 
 export default function RegisterPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const nameRef = useRef<HTMLInputElement>(document.createElement("input"));
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
   const passwordRef = useRef<HTMLInputElement>(document.createElement("input"));
-
-  const loggedIn = useSelector((state: RootState) => state.isLoggedIn);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -46,48 +39,10 @@ export default function RegisterPage() {
           state: { email: response.data.data.email },
         });
       })
-      // .then(() => {
-      //   // authenticate user to get jwt token
-      //   axios({
-      //     url: "https://fierce-spring-store-backend.herokuapp.com/api/auth",
-      //     method: "POST",
-      //     headers: {
-      //       Accept: "application/json",
-      //       "Content-Type": "application/json;charset=UTF-8",
-      //     },
-      //     data: {
-      //       email: email,
-      //       password: password,
-      //     },
-      //   })
-      //     .then((res) => {
-      //       const jwt = res.data;
-      //       Cookies.set("jwt", jwt);
-      //       if (res.status === 200) {
-      //         // get the user information with the given jwt token
-      //         axios(
-      //           "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
-      //           {
-      //             headers: { "x-auth-token": jwt },
-      //           }
-      //         )
-      //         .catch((err) => console.log(err));
-      //         dispatch(userLogin(email));
-      //       }
-      //     })
-      //     .catch((err) => console.log(err));
-      // })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  // After regisration, redirect to Home page. Should also rerender header UI
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     navigate("/", { replace: true });
-  //   }
-  // }, [navigate, loggedIn]);
 
   return (
     <div className="form-container">
