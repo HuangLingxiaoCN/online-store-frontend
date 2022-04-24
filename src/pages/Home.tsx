@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../components/home/header/Header";
 import { Footer } from "../components/UI/footer/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
   const [cartItemsQuantity, setCartItemsQuantity] = useState(0);
 
   const isLoggedIn = useSelector((state: RootState) => state.isLoggedIn);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Get products from backend
@@ -56,6 +58,8 @@ export default function Home() {
       if (jwt.length > 149) {
         Cookies.remove("jwt");
       } else {
+        // If the user email is not confirmed yet, resend the email
+
         axios("https://fierce-spring-store-backend.herokuapp.com/api/user/me", {
           headers: { "x-auth-token": jwt },
         })
@@ -64,10 +68,18 @@ export default function Home() {
             setCartItemsQuantity(cartItems.length);
             dispatch(userLogin(res.data.email));
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            // // If user email is not confirmed, go to EmailToBeConfirmed page
+            // if (err.response.data.msg === "Email not confirmed") {
+            //   navigate("/EmailToBeConfirmed", {
+            //     state: { email: err.response.data.email },
+            //   });
+            // }
+            console.log(err);
+          });
       }
     }
-  }, [isLoggedIn, cartItems.length, dispatch]);
+  }, [isLoggedIn, cartItems.length, dispatch, navigate]);
 
   return (
     <>

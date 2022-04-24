@@ -11,6 +11,8 @@ import AdminOrderDetail from './pages/admin/AdminOrderDetail';
 import AdminLoginPage from './pages/AdminLoginPage';
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage';
+import EmailToBeConfirmed from './pages/EmailToBeConfirmed';
+import EmailConfirmation from './pages/EmailConfirmation';
 import ItemDetail from './pages/ItemDetail';
 import CartPage from './pages/CartPage';
 import OrderDetail from './pages/OrderDetail';
@@ -37,7 +39,7 @@ import './sass/App.scss';
         12. Add registration email verification ()
         13. After Checkout, create a billing information page to collect users' billing info. And Store orders in database (\/)
         14. Show Order History in user Profile page and add delete order function(\/)
-        15. Create an admin account page to manage all products, users and orders ()
+        15. Create an admin account page to manage all products, users and orders (\/)
         16. Add email validation in backend to verify the email is valid. And password length verification. ()
 */
 
@@ -62,6 +64,8 @@ function App() {
         <Route path="/adminLogin" element={<AdminLoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/EmailToBeConfirmed" element={<EmailToBeConfirmed />} />
+        <Route path="/confirm/:id" element={<EmailConfirmation />} />
         <Route path="/order" element={<CheckoutPage />} />
         <Route path="/checkOutSuccess" element={<CheckOutSuccess />} />
       </Routes>

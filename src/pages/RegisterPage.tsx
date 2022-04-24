@@ -11,8 +11,8 @@ import "../sass/SignInForm.scss";
 // After registeration, the header UI is not rendered correctly
 
 export default function RegisterPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const nameRef = useRef<HTMLInputElement>(document.createElement("input"));
   const emailRef = useRef<HTMLInputElement>(document.createElement("input"));
@@ -27,6 +27,7 @@ export default function RegisterPage() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
+    // register new user
     axios({
       url: "https://fierce-spring-store-backend.herokuapp.com/api/user",
       method: "POST",
@@ -40,47 +41,53 @@ export default function RegisterPage() {
         password: password,
       },
     })
-      .then(() => {
-        axios({
-          url: "https://fierce-spring-store-backend.herokuapp.com/api/auth",
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-          data: {
-            email: email,
-            password: password,
-          },
-        })
-          .then((res) => {
-            const jwt = res.data;
-            Cookies.set("jwt", jwt);
-            if (res.status === 200) {
-              // get the user information with jwt token
-              axios(
-                "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
-                {
-                  headers: { "x-auth-token": jwt },
-                }
-              )
-              .catch((err) => console.log(err));
-              dispatch(userLogin(email));
-            }
-          })
-          .catch((err) => console.log(err));
+      .then((response) => {
+        navigate("/EmailToBeConfirmed", {
+          state: { email: response.data.data.email },
+        });
       })
+      // .then(() => {
+      //   // authenticate user to get jwt token
+      //   axios({
+      //     url: "https://fierce-spring-store-backend.herokuapp.com/api/auth",
+      //     method: "POST",
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json;charset=UTF-8",
+      //     },
+      //     data: {
+      //       email: email,
+      //       password: password,
+      //     },
+      //   })
+      //     .then((res) => {
+      //       const jwt = res.data;
+      //       Cookies.set("jwt", jwt);
+      //       if (res.status === 200) {
+      //         // get the user information with the given jwt token
+      //         axios(
+      //           "https://fierce-spring-store-backend.herokuapp.com/api/user/me",
+      //           {
+      //             headers: { "x-auth-token": jwt },
+      //           }
+      //         )
+      //         .catch((err) => console.log(err));
+      //         dispatch(userLogin(email));
+      //       }
+      //     })
+      //     .catch((err) => console.log(err));
+      // })
       .catch((err) => {
         console.log(err);
       });
   };
 
   // After regisration, redirect to Home page. Should also rerender header UI
-  useEffect(() => {
-    if (loggedIn) {
-      navigate("/", { replace: true });
-    }
-  }, [navigate, loggedIn]);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     navigate("/", { replace: true });
+  //   }
+  // }, [navigate, loggedIn]);
 
   return (
     <div className="form-container">
@@ -91,8 +98,15 @@ export default function RegisterPage() {
         <label htmlFor="email">Email</label>
         <input type="email" id="email" ref={emailRef} className="form-input" />
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" ref={passwordRef} className="form-input" />
-        <button type="submit" className="login-register-btn">Register</button>
+        <input
+          type="password"
+          id="password"
+          ref={passwordRef}
+          className="form-input"
+        />
+        <button type="submit" className="login-register-btn">
+          Register
+        </button>
         <Link to="/">
           <button type="button" className="backBtn">
             Go Back To Store
