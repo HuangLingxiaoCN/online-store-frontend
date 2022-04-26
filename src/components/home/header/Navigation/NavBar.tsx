@@ -55,9 +55,6 @@ export default function NavBar({
     </div>
   ) : (
     <div className="navbar-container">
-      <Link to="/adminLogin">
-        <Admin />
-      </Link>
       <Link to="/login">
         <Login />
       </Link>
