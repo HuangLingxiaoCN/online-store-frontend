@@ -9,10 +9,9 @@ export default function AdminHome() {
         <h2 className="admin-welcome">
           Welcome to Admin management console for the full-stack online store.
           There you can, as an admin, not only view all the products, orders and
-          users, but also remove products, delete orders and suspend users. On
-          the right hand side, you can see four navigation links to Home, Users,
-          Products and Orders. Click one of them and view different management
-          pages.
+          users, but also remove products and suspend users. On the left hand
+          side, you can see four navigation links to Home, Users, Products and
+          Orders. Click one of them and view different management pages.
         </h2>
       </div>
       <AdminNav />

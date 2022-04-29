@@ -40,7 +40,7 @@ import './sass/App.scss';
         13. After Checkout, create a billing information page to collect users' billing info. And Store orders in database (\/)
         14. Show Order History in user Profile page and add delete order function(\/)
         15. Create an admin account page to manage all products, users and orders (\/)
-        16. Add email validation in backend to verify the email is valid. And password length verification. ()
+        16. Add email validation in backend to verify the email is valid. And password length verification. (\/)
 */
 
 // App.tsx component contains all the React Routes in the application
