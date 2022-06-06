@@ -22,9 +22,12 @@ h3 {
 }
 
 .loader {
-  position: absolute;
-  top: calc(50% - 50px - 8px);
-  left: calc(50% - 50px - 8px);
+  // position: absolute;
+  position: relative;
+  // top: calc(50% - 50px - 8px);
+  top: 10px;
+  // left: calc(50% - 50px - 8px);
+  left: calc(50% - 50px - 8px - 4rem);
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;

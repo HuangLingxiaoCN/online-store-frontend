@@ -41,6 +41,7 @@ import './sass/App.scss';
         14. Show Order History in user Profile page and add delete order function(\/)
         15. Create an admin account page to manage all products, users and orders (\/)
         16. Add email validation in backend to verify the email is valid. And password length verification. (\/)
+        17. In admin page, add styling for the current page ()
 */
 
 // App.tsx component contains all the React Routes in the application
@@ -55,7 +56,6 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/detail" element={<ItemDetail />} />
         <Route path="/admin" element={<AdminHome />} />
-        <Route path="/admin/home" element={<AdminHome />} />
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/productDetail" element={<AdminProductDetail />} />

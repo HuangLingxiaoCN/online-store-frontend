@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import "../../../sass/AdminNav.scss";
+
 
 export default function AdminNav() {
   const navigate = useNavigate();
@@ -10,18 +11,18 @@ export default function AdminNav() {
   return (
     <ul className="admin-sidebar">
       <h2>SideBar</h2>
-      <Link to="/admin">
+      <NavLink to="/admin">
         <li>Home</li>
-      </Link>
-      <Link to="/admin/users">
+      </NavLink>
+      <NavLink to="/admin/users">
         <li>Users</li>
-      </Link>
-      <Link to="/admin/products">
+      </NavLink>
+      <NavLink to="/admin/products">
         <li>Products</li>
-      </Link>
-      <Link to="/admin/orders">
+      </NavLink>
+      <NavLink to="/admin/orders">
         <li>Orders</li>
-      </Link>
+      </NavLink>
       <button
         className="admin-logoutBtn"
         onClick={() => {

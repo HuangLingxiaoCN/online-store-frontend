@@ -21,8 +21,13 @@
 
     &:hover {
       text-decoration: underline;
-    }
+    } 
   }
+
+  a {
+    text-decoration: none;
+  }
+
 }
 
 .admin-logoutBtn {

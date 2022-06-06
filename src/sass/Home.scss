@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
 .body-container {
   min-height: 100vh;
 // overflow-x hidden will prevent side scrollbar
   overflow-x: hidden;
+}
+
+.home-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  img {
+    width: 70vw;
+  }
+}
+
+.home-header {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
