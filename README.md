@@ -4,7 +4,7 @@
 This is the frontend part of my online store project which is developed for my bacholar thesis in 
 VAMK (Vaasa University of Applied Sciences). 
 
-### General Info
+## General Info
 
 The project can be used to buy and sell products and users can create their accounts with email verification. 
 Items can be added to user's shopping cart. When users want to check out the items in shopping cart, they are able to place orders from cart page.
